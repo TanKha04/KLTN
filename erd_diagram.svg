@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1300 900" width="1300" height="900">
+  <defs>
+    <style>
+      .entity { fill: #E0F7FA; stroke: #00ACC1; stroke-width: 2; }
+      .entity-header { fill: #B2EBF2; stroke: #00ACC1; stroke-width: 2; }
+      .relationship { fill: #E8EAF6; stroke: #5C6BC0; stroke-width: 2; }
+      .line { stroke: #555; stroke-width: 1.5; fill: none; }
+      .text-header { font-family: Arial, sans-serif; font-size: 11px; font-weight: bold; fill: #333; }
+      .text-attr { font-family: Arial, sans-serif; font-size: 8px; fill: #333; }
+      .text-pk { font-family: Arial, sans-serif; font-size: 8px; fill: #333; text-decoration: underline; }
+      .text-fk { font-family: Arial, sans-serif; font-size: 8px; fill: #0066cc; font-style: italic; }
+      .text-rel { font-family: Arial, sans-serif; font-size: 9px; fill: #333; }
+      .cardinality { font-family: Arial, sans-serif; font-size: 9px; fill: #C62828; font-weight: bold; }
+    </style>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1300" height="900" fill="#FAFAFA"/>
+  
+  <!-- Title -->
+  <text x="650" y="25" text-anchor="middle" font-family="Arial" font-size="16" font-weight="bold" fill="#333">ERD</text>
+  
+  <!-- ==================== ROW 1: Top entities ==================== -->
+  
+  <!-- RATINGS -->
+  <g transform="translate(30, 50)">
+    <rect class="entity-header" x="0" y="0" width="140" height="22" rx="2"/>
+    <text class="text-header" x="70" y="15" text-anchor="middle">RATINGS</text>
+    <rect class="entity" x="0" y="22" width="140" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">user_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">rated_user_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="72">rating - TINYINT NOT NULL</text>
+    <text class="text-attr" x="5" y="84">comment - TEXT</text>
+  </g>
+  
+  <!-- FRIENDSHIPS -->
+  <g transform="translate(200, 50)">
+    <rect class="entity-header" x="0" y="0" width="140" height="22" rx="2"/>
+    <text class="text-header" x="70" y="15" text-anchor="middle">FRIENDSHIPS</text>
+    <rect class="entity" x="0" y="22" width="140" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">user_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">friend_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="72">status - ENUM</text>
+    <text class="text-attr" x="5" y="84">created_at</text>
+  </g>
+  
+  <!-- VERIFICATIONS -->
+  <g transform="translate(370, 50)">
+    <rect class="entity-header" x="0" y="0" width="140" height="22" rx="2"/>
+    <text class="text-header" x="70" y="15" text-anchor="middle">VERIFICATIONS</text>
+    <rect class="entity" x="0" y="22" width="140" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">user_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="60">document_type NOT NULL</text>
+    <text class="text-attr" x="5" y="72">document_path NOT NULL</text>
+    <text class="text-attr" x="5" y="84">status - ENUM</text>
+  </g>
+  
+  <!-- POSTING_REQUESTS -->
+  <g transform="translate(540, 50)">
+    <rect class="entity-header" x="0" y="0" width="150" height="22" rx="2"/>
+    <text class="text-header" x="75" y="15" text-anchor="middle">POSTING_REQUESTS</text>
+    <rect class="entity" x="0" y="22" width="150" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">user_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="60">full_name NOT NULL</text>
+    <text class="text-attr" x="5" y="72">student_code NOT NULL</text>
+    <text class="text-attr" x="5" y="84">status - ENUM</text>
+  </g>
+  
+  <!-- REPORTS -->
+  <g transform="translate(720, 50)">
+    <rect class="entity-header" x="0" y="0" width="150" height="22" rx="2"/>
+    <text class="text-header" x="75" y="15" text-anchor="middle">REPORTS</text>
+    <rect class="entity" x="0" y="22" width="150" height="88"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">reporter_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">reported_user_id (FK) NULL</text>
+    <text class="text-fk" x="5" y="72">post_id (FK) NULL</text>
+    <text class="text-attr" x="5" y="84">reason NOT NULL</text>
+    <text class="text-attr" x="5" y="96">status - ENUM</text>
+  </g>
+  
+  <!-- NOTIFICATIONS -->
+  <g transform="translate(900, 50)">
+    <rect class="entity-header" x="0" y="0" width="140" height="22" rx="2"/>
+    <text class="text-header" x="70" y="15" text-anchor="middle">NOTIFICATIONS</text>
+    <rect class="entity" x="0" y="22" width="140" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">user_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="60">type NOT NULL</text>
+    <text class="text-attr" x="5" y="72">message NOT NULL</text>
+    <text class="text-attr" x="5" y="84">is_read - TINYINT</text>
+  </g>
+  
+  <!-- MESSAGES -->
+  <g transform="translate(1070, 50)">
+    <rect class="entity-header" x="0" y="0" width="140" height="22" rx="2"/>
+    <text class="text-header" x="70" y="15" text-anchor="middle">MESSAGES</text>
+    <rect class="entity" x="0" y="22" width="140" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">sender_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">receiver_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="72">message NOT NULL</text>
+    <text class="text-attr" x="5" y="84">is_read - TINYINT</text>
+  </g>
+  
+  <!-- ==================== CENTER: USERS ==================== -->
+  
+  <g transform="translate(500, 320)">
+    <rect class="entity-header" x="0" y="0" width="200" height="24" rx="2"/>
+    <text class="text-header" x="100" y="16" text-anchor="middle">USERS</text>
+    <rect class="entity" x="0" y="24" width="200" height="145"/>
+    <text class="text-pk" x="8" y="40">id (PK)</text>
+    <text class="text-attr" x="8" y="52">name - VARCHAR(150)</text>
+    <text class="text-attr" x="8" y="64">username NOT NULL</text>
+    <text class="text-attr" x="8" y="76">email NOT NULL</text>
+    <text class="text-attr" x="8" y="88">password NOT NULL</text>
+    <text class="text-attr" x="8" y="100">role - ENUM(patient,student,admin)</text>
+    <text class="text-attr" x="8" y="112">phone - VARCHAR(30)</text>
+    <text class="text-attr" x="8" y="124">school - VARCHAR(255)</text>
+    <text class="text-attr" x="8" y="136">verified - TINYINT</text>
+    <text class="text-attr" x="8" y="148">can_post - TINYINT</text>
+    <text class="text-attr" x="8" y="160">created_at</text>
+  </g>
+  
+  <!-- ==================== LEFT: COMMENTS ==================== -->
+  
+  <g transform="translate(30, 350)">
+    <rect class="entity-header" x="0" y="0" width="150" height="22" rx="2"/>
+    <text class="text-header" x="75" y="15" text-anchor="middle">COMMENTS</text>
+    <rect class="entity" x="0" y="22" width="150" height="75"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">post_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">user_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="72">content NOT NULL</text>
+    <text class="text-attr" x="5" y="84">created_at</text>
+  </g>
+  
+  <!-- ==================== BOTTOM ROW ==================== -->
+  
+  <!-- FAVORITES -->
+  <g transform="translate(30, 650)">
+    <rect class="entity-header" x="0" y="0" width="150" height="22" rx="2"/>
+    <text class="text-header" x="75" y="15" text-anchor="middle">FAVORITES</text>
+    <rect class="entity" x="0" y="22" width="150" height="62"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">user_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">post_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="72">created_at</text>
+  </g>
+  
+  <!-- POSTS -->
+  <g transform="translate(500, 650)">
+    <rect class="entity-header" x="0" y="0" width="200" height="24" rx="2"/>
+    <text class="text-header" x="100" y="16" text-anchor="middle">POSTS</text>
+    <rect class="entity" x="0" y="24" width="200" height="115"/>
+    <text class="text-pk" x="8" y="40">id (PK)</text>
+    <text class="text-fk" x="8" y="52">user_id (FK) NOT NULL</text>
+    <text class="text-attr" x="8" y="64">title NOT NULL</text>
+    <text class="text-attr" x="8" y="76">content NOT NULL</text>
+    <text class="text-attr" x="8" y="88">type - ENUM(recruitment,application)</text>
+    <text class="text-attr" x="8" y="100">category - VARCHAR(100)</text>
+    <text class="text-attr" x="8" y="112">area - VARCHAR(255)</text>
+    <text class="text-attr" x="8" y="124">status - ENUM(open,closed,...)</text>
+  </g>
+  
+  <!-- APPOINTMENTS -->
+  <g transform="translate(1000, 650)">
+    <rect class="entity-header" x="0" y="0" width="160" height="22" rx="2"/>
+    <text class="text-header" x="80" y="15" text-anchor="middle">APPOINTMENTS</text>
+    <rect class="entity" x="0" y="22" width="160" height="88"/>
+    <text class="text-pk" x="5" y="36">id (PK)</text>
+    <text class="text-fk" x="5" y="48">patient_id (FK) NOT NULL</text>
+    <text class="text-fk" x="5" y="60">student_id (FK) NOT NULL</text>
+    <text class="text-attr" x="5" y="72">appointment_date</text>
+    <text class="text-attr" x="5" y="84">status - ENUM</text>
+    <text class="text-attr" x="5" y="96">notes - TEXT</text>
+  </g>
+  
+  <!-- ==================== RELATIONSHIPS ==================== -->
+  
+  <ellipse class="relationship" cx="100" cy="220" rx="38" ry="18"/>
+  <text class="text-rel" x="100" y="224" text-anchor="middle">đánh giá</text>
+  
+  <ellipse class="relationship" cx="270" cy="220" rx="38" ry="18"/>
+  <text class="text-rel" x="270" y="224" text-anchor="middle">kết bạn</text>
+  
+  <ellipse class="relationship" cx="440" cy="220" rx="40" ry="18"/>
+  <text class="text-rel" x="440" y="224" text-anchor="middle">xác minh</text>
+  
+  <ellipse class="relationship" cx="615" cy="220" rx="38" ry="18"/>
+  <text class="text-rel" x="615" y="224" text-anchor="middle">yêu cầu</text>
+  
+  <ellipse class="relationship" cx="795" cy="220" rx="38" ry="18"/>
+  <text class="text-rel" x="795" y="224" text-anchor="middle">báo cáo</text>
+  
+  <ellipse class="relationship" cx="970" cy="220" rx="32" ry="18"/>
+  <text class="text-rel" x="970" y="224" text-anchor="middle">nhận</text>
+  
+  <ellipse class="relationship" cx="1140" cy="220" rx="32" ry="18"/>
+  <text class="text-rel" x="1140" y="224" text-anchor="middle">gửi</text>
+  
+  <ellipse class="relationship" cx="300" cy="390" rx="32" ry="18"/>
+  <text class="text-rel" x="300" y="394" text-anchor="middle">viết</text>
+  
+  <ellipse class="relationship" cx="300" cy="560" rx="28" ry="16"/>
+  <text class="text-rel" x="300" y="564" text-anchor="middle">có</text>
+  
+  <ellipse class="relationship" cx="300" cy="700" rx="42" ry="18"/>
+  <text class="text-rel" x="300" y="704" text-anchor="middle">yêu thích</text>
+  
+  <ellipse class="relationship" cx="600" cy="560" rx="42" ry="18"/>
+  <text class="text-rel" x="600" y="564" text-anchor="middle">đăng bài</text>
+  
+  <ellipse class="relationship" cx="795" cy="560" rx="45" ry="18"/>
+  <text class="text-rel" x="795" y="564" text-anchor="middle">bị báo cáo</text>
+  
+  <ellipse class="relationship" cx="900" cy="450" rx="38" ry="18"/>
+  <text class="text-rel" x="900" y="454" text-anchor="middle">đặt lịch</text>
+  
+  <!-- ==================== LINES ==================== -->
+  
+  <!-- RATINGS - USER -->
+  <line class="line" x1="100" y1="147" x2="100" y2="202"/>
+  <line class="line" x1="100" y1="238" x2="500" y2="380"/>
+  <text class="cardinality" x="85" y="175">1,1</text>
+  <text class="cardinality" x="300" y="295">0,n</text>
+  
+  <!-- FRIENDSHIPS - USER -->
+  <line class="line" x1="270" y1="147" x2="270" y2="202"/>
+  <line class="line" x1="270" y1="238" x2="500" y2="360"/>
+  <text class="cardinality" x="255" y="175">1,1</text>
+  <text class="cardinality" x="380" y="285">0,n</text>
+  
+  <!-- VERIFICATIONS - USER -->
+  <line class="line" x1="440" y1="147" x2="440" y2="202"/>
+  <line class="line" x1="440" y1="238" x2="520" y2="320"/>
+  <text class="cardinality" x="425" y="175">1,1</text>
+  <text class="cardinality" x="470" y="285">0,n</text>
+  
+  <!-- POSTING_REQUESTS - USER -->
+  <line class="line" x1="615" y1="147" x2="615" y2="202"/>
+  <line class="line" x1="615" y1="238" x2="600" y2="320"/>
+  <text class="cardinality" x="625" y="175">1,1</text>
+  <text class="cardinality" x="615" y="285">0,n</text>
+  
+  <!-- REPORTS - USER -->
+  <line class="line" x1="795" y1="160" x2="795" y2="202"/>
+  <line class="line" x1="795" y1="238" x2="700" y2="350"/>
+  <text class="cardinality" x="805" y="180">1,1</text>
+  <text class="cardinality" x="755" y="285">0,n</text>
+  
+  <!-- NOTIFICATIONS - USER -->
+  <line class="line" x1="970" y1="147" x2="970" y2="202"/>
+  <line class="line" x1="970" y1="238" x2="700" y2="380"/>
+  <text class="cardinality" x="980" y="175">1,1</text>
+  <text class="cardinality" x="840" y="295">0,n</text>
+  
+  <!-- MESSAGES - USER -->
+  <line class="line" x1="1140" y1="147" x2="1140" y2="202"/>
+  <line class="line" x1="1140" y1="238" x2="700" y2="400"/>
+  <text class="cardinality" x="1150" y="175">1,1</text>
+  <text class="cardinality" x="920" y="305">0,n</text>
+  
+  <!-- COMMENTS - viết - USER -->
+  <line class="line" x1="180" y1="390" x2="268" y2="390"/>
+  <line class="line" x1="332" y1="390" x2="500" y2="390"/>
+  <text class="cardinality" x="215" y="382">1,1</text>
+  <text class="cardinality" x="420" y="382">0,n</text>
+  
+  <!-- POSTS - có - COMMENTS -->
+  <line class="line" x1="105" y1="447" x2="272" y2="560"/>
+  <line class="line" x1="328" y1="560" x2="500" y2="700"/>
+  <text class="cardinality" x="175" y="495">1,1</text>
+  <text class="cardinality" x="420" y="620">0,n</text>
+  
+  <!-- USER - đăng bài - POSTS -->
+  <line class="line" x1="600" y1="489" x2="600" y2="542"/>
+  <line class="line" x1="600" y1="578" x2="600" y2="650"/>
+  <text class="cardinality" x="610" y="520">0,n</text>
+  <text class="cardinality" x="610" y="620">1,1</text>
+  
+  <!-- FAVORITES - yêu thích - USER/POST -->
+  <line class="line" x1="180" y1="700" x2="258" y2="700"/>
+  <line class="line" x1="342" y1="690" x2="500" y2="460"/>
+  <text class="cardinality" x="210" y="692">1,1</text>
+  <text class="cardinality" x="430" y="560">0,n</text>
+  
+  <line class="line" x1="342" y1="710" x2="500" y2="710"/>
+  <text class="cardinality" x="210" y="722">1,1</text>
+  <text class="cardinality" x="430" y="722">0,n</text>
+  
+  <!-- REPORTS - bị báo cáo - POSTS -->
+  <line class="line" x1="795" y1="160" x2="795" y2="542"/>
+  <line class="line" x1="795" y1="578" x2="700" y2="680"/>
+  <text class="cardinality" x="805" y="520">0,1</text>
+  <text class="cardinality" x="755" y="620">0,n</text>
+  
+  <!-- USER - đặt lịch - APPOINTMENTS -->
+  <line class="line" x1="700" y1="430" x2="862" y2="450"/>
+  <line class="line" x1="938" y1="450" x2="1000" y2="680"/>
+  <text class="cardinality" x="780" y="435">0,n</text>
+  <text class="cardinality" x="975" y="560">1,1</text>
+  
+  <!-- ==================== LEGEND ==================== -->
+  <g transform="translate(30, 800)">
+    <rect x="0" y="0" width="280" height="85" fill="#fff" stroke="#ccc" rx="4"/>
+    <text x="140" y="16" text-anchor="middle" font-family="Arial" font-size="10" font-weight="bold">Chú thích</text>
+    <rect class="entity-header" x="10" y="28" width="50" height="16" rx="2"/>
+    <text class="text-attr" x="68" y="40">Entity</text>
+    <ellipse class="relationship" cx="35" cy="60" rx="25" ry="12"/>
+    <text class="text-attr" x="68" y="64">Relationship</text>
+    <text class="cardinality" x="150" y="40">1,1 = Bắt buộc một</text>
+    <text class="cardinality" x="150" y="54">0,n = Không hoặc nhiều</text>
+    <text class="cardinality" x="150" y="68">0,1 = Không hoặc một</text>
+    <text class="text-pk" x="150" y="82">PK/FK = Khóa chính/ngoại</text>
+  </g>
+  
+</svg>

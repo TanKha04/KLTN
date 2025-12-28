@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1200">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f8fafc"/>
+      <stop offset="100%" style="stop-color:#e2e8f0"/>
+    </linearGradient>
+    <linearGradient id="systemGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#dbeafe"/>
+      <stop offset="100%" style="stop-color:#bfdbfe"/>
+    </linearGradient>
+    <linearGradient id="ucGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef3c7"/>
+      <stop offset="100%" style="stop-color:#fde68a"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="2" dy="3" stdDeviation="3" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1400" height="1200" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="700" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#1e40af">
+    SƠ ĐỒ USE CASE - HỆ THỐNG KẾT NỐI Y TẾ
+  </text>
+  <text x="700" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#64748b">
+    Kết nối Bệnh nhân và Sinh viên Y khoa
+  </text>
+
+  <!-- System Boundary -->
+  <rect x="200" y="100" width="1000" height="1050" rx="20" fill="url(#systemGrad)" stroke="#3b82f6" stroke-width="3" filter="url(#shadow)"/>
+  <text x="700" y="135" text-anchor="middle" font-family="Arial, sans-serif" font-size="20" font-weight="bold" fill="#1e40af">
+    Hệ thống Kết nối Y tế
+  </text>
+
+  <!-- ========== ACTORS ========== -->
+  
+  <!-- Guest Actor (Left) -->
+  <g transform="translate(80, 200)">
+    <circle cx="0" cy="0" r="20" fill="#94a3b8" stroke="#475569" stroke-width="2"/>
+    <line x1="0" y1="20" x2="0" y2="55" stroke="#475569" stroke-width="2"/>
+    <line x1="-25" y1="35" x2="25" y2="35" stroke="#475569" stroke-width="2"/>
+    <line x1="0" y1="55" x2="-20" y2="85" stroke="#475569" stroke-width="2"/>
+    <line x1="0" y1="55" x2="20" y2="85" stroke="#475569" stroke-width="2"/>
+    <text x="0" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#475569">Khách</text>
+  </g>
+
+  <!-- Patient Actor (Left) -->
+  <g transform="translate(80, 450)">
+    <circle cx="0" cy="0" r="20" fill="#3b82f6" stroke="#1d4ed8" stroke-width="2"/>
+    <line x1="0" y1="20" x2="0" y2="55" stroke="#1d4ed8" stroke-width="2"/>
+    <line x1="-25" y1="35" x2="25" y2="35" stroke="#1d4ed8" stroke-width="2"/>
+    <line x1="0" y1="55" x2="-20" y2="85" stroke="#1d4ed8" stroke-width="2"/>
+    <line x1="0" y1="55" x2="20" y2="85" stroke="#1d4ed8" stroke-width="2"/>
+    <text x="0" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1d4ed8">Bệnh nhân</text>
+  </g>
+
+  <!-- Student Actor (Left) -->
+  <g transform="translate(80, 750)">
+    <circle cx="0" cy="0" r="20" fill="#10b981" stroke="#059669" stroke-width="2"/>
+    <line x1="0" y1="20" x2="0" y2="55" stroke="#059669" stroke-width="2"/>
+    <line x1="-25" y1="35" x2="25" y2="35" stroke="#059669" stroke-width="2"/>
+    <line x1="0" y1="55" x2="-20" y2="85" stroke="#059669" stroke-width="2"/>
+    <line x1="0" y1="55" x2="20" y2="85" stroke="#059669" stroke-width="2"/>
+    <text x="0" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#059669">Sinh viên</text>
+    <text x="0" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#059669">Y khoa</text>
+  </g>
+
+  <!-- Admin Actor (Right) -->
+  <g transform="translate(1320, 550)">
+    <circle cx="0" cy="0" r="20" fill="#dc2626" stroke="#b91c1c" stroke-width="2"/>
+    <line x1="0" y1="20" x2="0" y2="55" stroke="#b91c1c" stroke-width="2"/>
+    <line x1="-25" y1="35" x2="25" y2="35" stroke="#b91c1c" stroke-width="2"/>
+    <line x1="0" y1="55" x2="-20" y2="85" stroke="#b91c1c" stroke-width="2"/>
+    <line x1="0" y1="55" x2="20" y2="85" stroke="#b91c1c" stroke-width="2"/>
+    <text x="0" y="105" text-anchor="middle" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#b91c1c">Quản trị</text>
+    <text x="0" y="120" text-anchor="middle" font-family="Arial, sans-serif" font-size="11" fill="#b91c1c">viên</text>
+  </g>
+  <!-- =
+========= USE CASES - GUEST ========== -->
+  
+  <!-- UC: Xem trang chủ -->
+  <ellipse cx="350" cy="180" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xem trang chủ</text>
+  <line x1="100" y1="200" x2="260" y2="180" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- UC: Đăng ký tài khoản -->
+  <ellipse cx="350" cy="250" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Đăng ký tài khoản</text>
+  <line x1="100" y1="200" x2="260" y2="250" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- UC: Đăng nhập -->
+  <ellipse cx="350" cy="320" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Đăng nhập</text>
+  <line x1="100" y1="200" x2="260" y2="320" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- UC: Tìm kiếm bài đăng -->
+  <ellipse cx="550" cy="180" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Tìm kiếm bài đăng</text>
+  <line x1="100" y1="200" x2="455" y2="180" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- UC: Xem chi tiết bài đăng -->
+  <ellipse cx="550" cy="250" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xem chi tiết bài đăng</text>
+  <line x1="100" y1="200" x2="455" y2="250" stroke="#475569" stroke-width="1.5"/>
+
+  <!-- UC: Quên mật khẩu -->
+  <ellipse cx="550" cy="320" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quên mật khẩu</text>
+  <line x1="100" y1="200" x2="460" y2="320" stroke="#475569" stroke-width="1.5"/>
+  
+<!-- ========== USE CASES - PATIENT (Bệnh nhân) ========== -->
+  
+  <!-- UC: Đăng tin tuyển dụng -->
+  <ellipse cx="350" cy="400" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Đăng tin tuyển dụng</text>
+  <line x1="100" y1="450" x2="255" y2="400" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Quản lý tin đăng -->
+  <ellipse cx="350" cy="470" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý tin đăng</text>
+  <line x1="100" y1="450" x2="260" y2="470" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Chọn sinh viên -->
+  <ellipse cx="350" cy="540" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Chọn sinh viên</text>
+  <line x1="100" y1="450" x2="260" y2="540" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Gửi tin nhắn -->
+  <ellipse cx="550" cy="400" rx="85" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Gửi tin nhắn</text>
+  <line x1="100" y1="450" x2="465" y2="400" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="100" y1="750" x2="465" y2="400" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Đánh giá người dùng -->
+  <ellipse cx="550" cy="470" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Đánh giá người dùng</text>
+  <line x1="100" y1="450" x2="455" y2="470" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="100" y1="750" x2="455" y2="470" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Lưu yêu thích -->
+  <ellipse cx="550" cy="540" rx="85" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Lưu yêu thích</text>
+  <line x1="100" y1="450" x2="465" y2="540" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="100" y1="750" x2="465" y2="540" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Chỉnh sửa hồ sơ -->
+  <ellipse cx="750" cy="400" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="405" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Chỉnh sửa hồ sơ</text>
+  <line x1="100" y1="450" x2="660" y2="400" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="100" y1="750" x2="660" y2="400" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Bình luận bài đăng -->
+  <ellipse cx="750" cy="470" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="475" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Bình luận bài đăng</text>
+  <line x1="100" y1="450" x2="655" y2="470" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="100" y1="750" x2="655" y2="470" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Báo cáo vi phạm -->
+  <ellipse cx="750" cy="540" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="545" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Báo cáo vi phạm</text>
+  <line x1="100" y1="450" x2="660" y2="540" stroke="#1d4ed8" stroke-width="1.5"/>
+  <line x1="100" y1="750" x2="660" y2="540" stroke="#059669" stroke-width="1.5"/>
+  <!-- ==
+======== USE CASES - STUDENT (Sinh viên) ========== -->
+  
+  <!-- UC: Đăng tin ứng tuyển -->
+  <ellipse cx="350" cy="680" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="685" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Đăng tin ứng tuyển</text>
+  <line x1="100" y1="750" x2="255" y2="680" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Xin xác minh SV -->
+  <ellipse cx="350" cy="750" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xin xác minh SV</text>
+  <line x1="100" y1="750" x2="260" y2="750" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Xin quyền đăng tin -->
+  <ellipse cx="350" cy="820" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="350" y="825" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xin quyền đăng tin</text>
+  <line x1="100" y1="750" x2="255" y2="820" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Xem lịch sử nhận việc -->
+  <ellipse cx="550" cy="680" rx="100" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="685" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xem lịch sử nhận việc</text>
+  <line x1="100" y1="750" x2="450" y2="680" stroke="#059669" stroke-width="1.5"/>
+
+  <!-- UC: Quản lý bạn bè -->
+  <ellipse cx="550" cy="750" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý bạn bè</text>
+  <line x1="100" y1="750" x2="460" y2="750" stroke="#059669" stroke-width="1.5"/>
+  <line x1="100" y1="450" x2="460" y2="750" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Yêu cầu hỗ trợ TK -->
+  <ellipse cx="550" cy="820" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="550" y="825" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Yêu cầu hỗ trợ TK</text>
+  <line x1="100" y1="750" x2="455" y2="820" stroke="#059669" stroke-width="1.5"/>
+  <line x1="100" y1="450" x2="455" y2="820" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Chat trực tiếp -->
+  <ellipse cx="750" cy="680" rx="85" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="685" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Chat trực tiếp</text>
+  <line x1="100" y1="750" x2="665" y2="680" stroke="#059669" stroke-width="1.5"/>
+  <line x1="100" y1="450" x2="665" y2="680" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Xem thông báo -->
+  <ellipse cx="750" cy="750" rx="85" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="755" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xem thông báo</text>
+  <line x1="100" y1="750" x2="665" y2="750" stroke="#059669" stroke-width="1.5"/>
+  <line x1="100" y1="450" x2="665" y2="750" stroke="#1d4ed8" stroke-width="1.5"/>
+
+  <!-- UC: Đăng xuất -->
+  <ellipse cx="750" cy="820" rx="75" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="750" y="825" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Đăng xuất</text>
+  <line x1="100" y1="750" x2="675" y2="820" stroke="#059669" stroke-width="1.5"/>
+  <line x1="100" y1="450" x2="675" y2="820" stroke="#1d4ed8" stroke-width="1.5"/>
+  <!--
+ ========== USE CASES - ADMIN (Quản trị viên) ========== -->
+  
+  <!-- UC: Quản lý người dùng -->
+  <ellipse cx="950" cy="180" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="185" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý người dùng</text>
+  <line x1="1300" y1="550" x2="1045" y2="180" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Xác minh sinh viên -->
+  <ellipse cx="950" cy="250" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="255" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xác minh sinh viên</text>
+  <line x1="1300" y1="550" x2="1045" y2="250" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Quản lý bài viết -->
+  <ellipse cx="950" cy="320" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="325" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý bài viết</text>
+  <line x1="1300" y1="550" x2="1045" y2="320" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Quản lý bình luận -->
+  <ellipse cx="950" cy="390" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="395" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý bình luận</text>
+  <line x1="1300" y1="550" x2="1045" y2="390" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Xử lý báo cáo -->
+  <ellipse cx="950" cy="460" rx="90" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="465" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xử lý báo cáo</text>
+  <line x1="1300" y1="550" x2="1040" y2="460" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Gửi thông báo -->
+  <ellipse cx="950" cy="530" rx="85" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="535" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Gửi thông báo</text>
+  <line x1="1300" y1="550" x2="1035" y2="530" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Cấp quyền đăng bài -->
+  <ellipse cx="950" cy="600" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="605" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Cấp quyền đăng bài</text>
+  <line x1="1300" y1="550" x2="1045" y2="600" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Xem thống kê -->
+  <ellipse cx="950" cy="670" rx="85" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="675" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xem thống kê</text>
+  <line x1="1300" y1="550" x2="1035" y2="670" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Quản lý yêu thích -->
+  <ellipse cx="950" cy="740" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="745" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý yêu thích</text>
+  <line x1="1300" y1="550" x2="1045" y2="740" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Xử lý yêu cầu TK -->
+  <ellipse cx="950" cy="810" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="815" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Xử lý yêu cầu TK</text>
+  <line x1="1300" y1="550" x2="1045" y2="810" stroke="#b91c1c" stroke-width="1.5"/>
+
+  <!-- UC: Quản lý đánh giá -->
+  <ellipse cx="950" cy="880" rx="95" ry="28" fill="url(#ucGrad)" stroke="#d97706" stroke-width="2" filter="url(#shadow)"/>
+  <text x="950" y="885" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#92400e">Quản lý đánh giá</text>
+  <line x1="1300" y1="550" x2="1045" y2="880" stroke="#b91c1c" stroke-width="1.5"/>
+  <!-- ==
+======== RELATIONSHIPS (Include/Extend) ========== -->
+  
+  <!-- Include: Đăng ký -> Xác thực email -->
+  <ellipse cx="350" cy="160" rx="80" ry="22" fill="#e0f2fe" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="350" y="165" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#0369a1">Xác thực email</text>
+  <line x1="350" y1="222" x2="350" y2="182" stroke="#0284c7" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="355" y="205" font-family="Arial, sans-serif" font-size="9" fill="#0284c7">«include»</text>
+
+  <!-- Extend: Đăng nhập -> Facebook Login -->
+  <ellipse cx="550" cy="370" rx="80" ry="22" fill="#fce7f3" stroke="#db2777" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="550" y="375" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#be185d">Đăng nhập FB</text>
+  <line x1="480" y1="340" x2="510" y2="355" stroke="#db2777" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="460" y="355" font-family="Arial, sans-serif" font-size="9" fill="#db2777">«extend»</text>
+
+  <!-- ========== LEGEND ========== -->
+  <rect x="220" y="950" width="760" height="180" rx="15" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="600" y="980" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#1e293b">CHÚ THÍCH</text>
+  
+  <!-- Actor Legend -->
+  <g transform="translate(260, 1010)">
+    <circle cx="0" cy="0" r="12" fill="#94a3b8" stroke="#475569" stroke-width="1.5"/>
+    <line x1="0" y1="12" x2="0" y2="30" stroke="#475569" stroke-width="1.5"/>
+    <line x1="-15" y1="20" x2="15" y2="20" stroke="#475569" stroke-width="1.5"/>
+    <line x1="0" y1="30" x2="-12" y2="45" stroke="#475569" stroke-width="1.5"/>
+    <line x1="0" y1="30" x2="12" y2="45" stroke="#475569" stroke-width="1.5"/>
+    <text x="40" y="20" font-family="Arial, sans-serif" font-size="12" fill="#475569">Actor (Tác nhân)</text>
+  </g>
+
+  <!-- Use Case Legend -->
+  <ellipse cx="400" cy="1030" rx="60" ry="20" fill="url(#ucGrad)" stroke="#d97706" stroke-width="1.5"/>
+  <text x="400" y="1035" text-anchor="middle" font-family="Arial, sans-serif" font-size="10" fill="#92400e">Use Case</text>
+  <text x="480" y="1035" font-family="Arial, sans-serif" font-size="12" fill="#475569">Use Case (Chức năng)</text>
+
+  <!-- Association Legend -->
+  <line x1="620" y1="1020" x2="700" y2="1020" stroke="#475569" stroke-width="2"/>
+  <text x="720" y="1025" font-family="Arial, sans-serif" font-size="12" fill="#475569">Association (Liên kết)</text>
+
+  <!-- Include Legend -->
+  <line x1="260" y1="1080" x2="340" y2="1080" stroke="#0284c7" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="290" y="1095" font-family="Arial, sans-serif" font-size="9" fill="#0284c7">«include»</text>
+  <text x="360" y="1085" font-family="Arial, sans-serif" font-size="12" fill="#475569">Include (Bao gồm)</text>
+
+  <!-- Extend Legend -->
+  <line x1="520" y1="1080" x2="600" y2="1080" stroke="#db2777" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="550" y="1095" font-family="Arial, sans-serif" font-size="9" fill="#db2777">«extend»</text>
+  <text x="620" y="1085" font-family="Arial, sans-serif" font-size="12" fill="#475569">Extend (Mở rộng)</text>
+
+  <!-- System Boundary Legend -->
+  <rect x="760" y="1060" width="80" height="40" rx="5" fill="url(#systemGrad)" stroke="#3b82f6" stroke-width="1.5"/>
+  <text x="860" y="1085" font-family="Arial, sans-serif" font-size="12" fill="#475569">System Boundary</text>
+
+  <!-- Actor Colors -->
+  <circle cx="280" cy="1120" r="8" fill="#94a3b8"/>
+  <text x="295" y="1125" font-family="Arial, sans-serif" font-size="11" fill="#475569">Khách</text>
+  <circle cx="380" cy="1120" r="8" fill="#3b82f6"/>
+  <text x="395" y="1125" font-family="Arial, sans-serif" font-size="11" fill="#1d4ed8">Bệnh nhân</text>
+  <circle cx="500" cy="1120" r="8" fill="#10b981"/>
+  <text x="515" y="1125" font-family="Arial, sans-serif" font-size="11" fill="#059669">Sinh viên</text>
+  <circle cx="620" cy="1120" r="8" fill="#dc2626"/>
+  <text x="635" y="1125" font-family="Arial, sans-serif" font-size="11" fill="#b91c1c">Quản trị viên</text>
+
+</svg>

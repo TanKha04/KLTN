@@ -1,0 +1,202 @@
+PHỤ LỤC
+
+Phụ lục trình bày các nội dung chi tiết và minh họa bổ sung cho phần báo cáo chính, bao gồm danh sách API, một số cấu hình triển khai và lưu trữ mã nguồn của ứng dụng. Các nội dung trong phụ lục giúp làm rõ hơn quá trình xây dựng và vận hành hệ thống.
+
+================================================================================
+Bảng 1 Phụ lục A Danh sách API của hệ thống
+================================================================================
+
+Bảng dưới đây mô tả một số API chính được xây dựng và kiểm thử trong ứng dụng.
+
++-----+----------------------------------------+------------------------------------------+
+| STT | API                                    | Mô tả chức năng                          |
++-----+----------------------------------------+------------------------------------------+
+|  1  | GET /api/posts.php                     | Lấy danh sách bài đăng (có phân trang)   |
+|  2  | GET /api/posts.php?id=:id              | Xem chi tiết một bài đăng                |
+|  3  | POST /api/posts.php                    | Tạo bài đăng mới                         |
+|  4  | PUT /api/posts.php?id=:id              | Cập nhật thông tin bài đăng              |
+|  5  | DELETE /api/posts.php?id=:id           | Xóa bài đăng                             |
+|  6  | GET /api/students.php                  | Lấy danh sách sinh viên                  |
+|  7  | GET /api/students.php?id=:id           | Xem thông tin một sinh viên              |
+|  8  | POST /api/students.php                 | Tạo tài khoản sinh viên mới              |
+|  9  | PUT /api/students.php?id=:id           | Cập nhật thông tin sinh viên             |
+| 10  | DELETE /api/students.php?id=:id        | Xóa tài khoản sinh viên                  |
+| 11  | POST /api/comments.php?action=add      | Thêm bình luận mới (hỗ trợ reply)        |
+| 12  | POST /api/comments.php?action=edit     | Sửa nội dung bình luận                   |
+| 13  | POST /api/comments.php?action=delete   | Xóa bình luận                            |
+| 14  | POST /api/comments.php?action=like     | Like/Unlike bình luận                    |
+| 15  | POST /api/comments.php?action=report   | Báo cáo bình luận vi phạm                |
+| 16  | GET /api/comments.php?action=get       | Lấy danh sách bình luận của bài đăng     |
+| 17  | POST /api/change_password.php          | Đổi mật khẩu người dùng                  |
+| 18  | POST /api/update_privacy.php           | Cập nhật cài đặt quyền riêng tư          |
+| 19  | POST /api/update_contact.php           | Cập nhật thông tin liên hệ               |
+| 20  | POST /api/delete_account.php           | Xóa tài khoản người dùng                 |
+| 21  | POST /api/mark_messages_read.php       | Đánh dấu tin nhắn đã đọc                 |
++-----+----------------------------------------+------------------------------------------+
+                    Bảng A.1 Danh sách API chính của hệ thống
+
+Các API được xây dựng theo chuẩn RESTful, sử dụng phương thức HTTP phù hợp với từng chức năng, dữ liệu trao đổi dưới dạng JSON.
+
+
+================================================================================
+Bảng 2 Phụ lục B Danh sách bảng cơ sở dữ liệu
+================================================================================
+
+Bảng dưới đây mô tả các bảng chính trong cơ sở dữ liệu của hệ thống.
+
++-----+------------------------+--------------------------------------------------+
+| STT | Tên bảng               | Mô tả                                            |
++-----+------------------------+--------------------------------------------------+
+|  1  | users                  | n)Lưu thông tin người dùng (bệnh nhân, sinh viê  |
+|  2  | posts                  | Lưu bài đăng tuyển dụng/ứng tuyển                |
+|  3  | applications           | Lưu đơn ứng tuyển của sinh viên                  |
+|  4  | comments               | Lưu bình luận trên bài đăng                      |
+|  5  | messages               | Lưu tin nhắn giữa người dùng                     |
+|  6  | conversations          | Lưu cuộc trò chuyện                              |
+|  7  | favorites              | Lưu bài đăng yêu thích                           |
+|  8  | ratings                | Lưu đánh giá của bệnh nhân cho sinh viên         |
+|  9  | reports                | Lưu báo cáo vi phạm                              |
+| 10  | verification_requests  | Lưu yêu cầu xác minh sinh viên                   |
+| 11  | notifications          | Lưu thông báo hệ thống                           |
+| 12  | password_resets        | Lưu token đặt lại mật khẩu                       |
++-----+------------------------+--------------------------------------------------+
+                    Bảng B.1 Danh sách bảng cơ sở dữ liệu
+
+
+================================================================================
+Bảng 3 Phụ lục C Tài khoản demo
+================================================================================
+
+Bảng dưới đây liệt kê các tài khoản demo để kiểm thử hệ thống.
+
++-----+------------+----------------------------+----------+--------------------+
+| STT | Vai trò    | Email                      | Mật khẩu | Ghi chú            |
++-----+------------+----------------------------+----------+--------------------+
+|  1  | Admin      | admin@admin.com            | admin123 | Quyền quản trị     |
+|  2  | Bệnh nhân  | patient@gmail.com          | 123456   | Tài khoản bệnh nhân|
+|  3  | Sinh viên  | student@university.edu.vn  | 123456   | Đã xác thực        |
++-----+------------+----------------------------+----------+--------------------+
+                    Bảng C.1 Danh sách tài khoản demo
+
+
+================================================================================
+Bảng 4 Phụ lục D Cấu trúc thư mục dự án
+================================================================================
+
+Bảng dưới đây mô tả cấu trúc thư mục chính của dự án.
+
++-----+-------------------------+----------------------------------------------+
+| STT | Thư mục/File            | Mô tả                                        |
++-----+-------------------------+----------------------------------------------+
+|  1  | api/                    | Chứa các file xử lý API                      |
+|  2  | assets/                 | Chứa tài nguyên tĩnh (css/, js/, images/)    |
+|  3  | uploads/                | Chứa file upload (avatars/, verification/)   |
+|  4  | config.php              | File cấu hình kết nối database               |
+|  5  | header.php, footer.php  | File giao diện chung                         |
+|  6  | index.php               | Trang chủ                                    |
+|  7  | login.php, register.php | Trang đăng nhập, đăng ký                     |
+|  8  | dashboard_patient.php   | Bảng điều khiển bệnh nhân                    |
+|  9  | dashboard_student.php   | Bảng điều khiển sinh viên                    |
+| 10  | admin_dashboard.php     | Bảng điều khiển quản trị                     |
+| 11  | Dockerfile              | File cấu hình Docker                         |
+| 12  | database.sql            | File khởi tạo cơ sở dữ liệu                  |
++-----+-------------------------+----------------------------------------------+
+                    Bảng D.1 Cấu trúc thư mục dự án
+
+
+================================================================================
+Bảng 5 Phụ lục E Hướng dẫn triển khai hệ thống
+================================================================================
+
+Bảng dưới đây mô tả các bước triển khai hệ thống với Docker và XAMPP.
+
++-----+------------+--------------------------------------------------------------+
+| STT | Phương thức| Các bước thực hiện                                           |
++-----+------------+--------------------------------------------------------------+
+|  1  | Docker     | 1. Cài đặt Docker và Docker Compose                          |
+|     |            | 2. Clone source code từ GitHub                               |
+|     |            | 3. Chạy lệnh: docker-compose up -d --build                   |
+|     |            | 4. Truy cập: http://localhost:3000                           |
++-----+------------+--------------------------------------------------------------+
+|  2  | XAMPP      | 1. Cài đặt XAMPP                                             |
+|     |            | 2. Copy source vào thư mục htdocs                            |
+|     |            | 3. Khởi động Apache và MySQL                                 |
+|     |            | 4. Import database.sql vào phpMyAdmin                        |
+|     |            | 5. Truy cập: http://localhost/DACN1                          |
++-----+------------+--------------------------------------------------------------+
+                    Bảng E.1 Hướng dẫn triển khai hệ thống
+
+
+================================================================================
+Phụ lục F Lưu trữ mã nguồn trên GitHub
+================================================================================
+
+Toàn bộ mã nguồn của hệ thống được lưu trữ và quản lý trên GitHub nhằm phục vụ việc theo dõi phiên bản, làm việc nhóm và bảo trì hệ thống.
+
+- Nền tảng lưu trữ: GitHub
+
+- Nội dung lưu trữ:
+
+    + Mã nguồn backend (PHP, MySQL)
+
+    + Mã nguồn frontend (HTML, CSS, Bootstrap, JavaScript)
+
+    + Cấu hình Docker
+
+    + Tài liệu hướng dẫn chạy hệ thống
+
+Link GitHub: https://github.com/tramtankha/DACN1-KetNoiYTe
+
+
+================================================================================
+Phụ lục G Cấu hình triển khai Docker
+================================================================================
+
+Hệ thống được triển khai bằng Docker nhằm đơn giản hóa quá trình cài đặt và đảm bảo tính nhất quán giữa các môi trường. Hệ thống gồm các container chính: web (PHP Apache), db (MySQL) và phpmyadmin.
+
+Cấu hình file: docker-compose.yml
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      - db
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html
+      - DOCKER_CONTAINER=true
+
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: dacn1_db
+      MYSQL_USER: dbuser
+      MYSQL_PASSWORD: dbpassword
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./database.sql:/docker-entrypoint-initdb.d/database.sql
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    depends_on:
+      - db
+
+volumes:
+  db_data:
+
+                    Bảng G.1 File cấu hình docker-compose.yml
+
+Việc sử dụng Docker giúp hệ thống dễ dàng triển khai, mở rộng và bảo trì trong tương lai.
+

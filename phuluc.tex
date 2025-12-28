@@ -1,0 +1,214 @@
+% ==================== PHU LUC ====================
+% File nay duoc input vao DACN.tex, khong can \begin{document}
+
+\chapter*{PHU LUC}
+\addcontentsline{toc}{chapter}{PHU LUC}
+
+Phu luc trinh bay cac noi dung chi tiet va minh hoa bo sung cho phan bao cao chinh, bao gom danh sach API, mot so cau hinh trien khai va luu tru ma nguon cua ung dung. Cac noi dung trong phu luc giup lam ro hon qua trinh xay dung va van hanh he thong.
+
+\section*{Bang 1 Phu luc A Danh sach API cua he thong}
+\addcontentsline{toc}{section}{Phu luc A. Danh sach API cua he thong}
+
+Bang duoi day mo ta mot so API chinh duoc xay dung va kiem thu trong ung dung.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{5cm}|p{5cm}|}
+\hline
+STT & API & Mo ta chuc nang \\
+\hline
+1 & POST /api/auth/register & Dang ky tai khoan nguoi dung \\
+\hline
+2 & POST /api/auth/login & Dang nhap he thong \\
+\hline
+3 & POST /api/auth/logout & Dang xuat tai khoan \\
+\hline
+4 & POST /api/auth/forgot-password & Gui yeu cau quen mat khau \\
+\hline
+5 & POST /api/auth/reset-password/:token & Dat lai mat khau moi \\
+\hline
+6 & GET /api/posts & Lay danh sach bai dang \\
+\hline
+7 & GET /api/posts/:id & Xem chi tiet bai dang \\
+\hline
+8 & POST /api/posts & Tao bai dang moi \\
+\hline
+9 & PUT /api/posts/:id & Cap nhat thong tin bai dang \\
+\hline
+10 & DELETE /api/posts/:id & Xoa bai dang \\
+\hline
+11 & POST /api/posts/:id/save & Luu hoac bo luu bai dang \\
+\hline
+12 & GET /api/users/:id & Xem thong tin nguoi dung \\
+\hline
+13 & PUT /api/users/:id & Cap nhat thong tin ca nhan \\
+\hline
+14 & PUT /api/users/:id/lock & Khoa/Mo khoa tai khoan \\
+\hline
+15 & GET /api/comments/:postId & Lay danh sach binh luan \\
+\hline
+16 & POST /api/comments & Tao binh luan moi \\
+\hline
+17 & POST /api/comments/:id/react & Tha cam xuc cho binh luan \\
+\hline
+18 & GET /api/messages/conversations & Lay danh sach cuoc tro chuyen \\
+\hline
+19 & POST /api/messages & Gui tin nhan \\
+\hline
+20 & POST /api/upload/images & Upload hinh anh \\
+\hline
+\end{tabular}
+\caption*{Bang A.1 Danh sach API chinh cua he thong}
+\end{table}
+
+Cac API duoc xay dung theo chuan RESTful, su dung phuong thuc HTTP phu hop voi tung chuc nang, du lieu trao doi duoi dang JSON.
+
+
+\section*{Bang 2 Phu luc B Danh sach bang co so du lieu}
+\addcontentsline{toc}{section}{Phu luc B. Danh sach bang co so du lieu}
+
+Bang duoi day mo ta cac bang chinh trong co so du lieu cua he thong.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{3.5cm}|p{6.5cm}|}
+\hline
+STT & Ten bang & Mo ta \\
+\hline
+1 & users & Luu thong tin nguoi dung \\
+\hline
+2 & posts & Luu bai dang tuyen dung/ung tuyen \\
+\hline
+3 & applications & Luu don ung tuyen cua sinh vien \\
+\hline
+4 & comments & Luu binh luan tren bai dang \\
+\hline
+5 & messages & Luu tin nhan giua nguoi dung \\
+\hline
+6 & conversations & Luu cuoc tro chuyen \\
+\hline
+7 & favorites & Luu bai dang yeu thich \\
+\hline
+8 & ratings & Luu danh gia cua benh nhan \\
+\hline
+9 & reports & Luu bao cao vi pham \\
+\hline
+10 & verification\_requests & Luu yeu cau xac minh sinh vien \\
+\hline
+11 & notifications & Luu thong bao he thong \\
+\hline
+12 & password\_resets & Luu token dat lai mat khau \\
+\hline
+\end{tabular}
+\caption*{Bang B.1 Danh sach bang co so du lieu}
+\end{table}
+
+\section*{Bang 3 Phu luc C Tai khoan demo}
+\addcontentsline{toc}{section}{Phu luc C. Tai khoan demo}
+
+Bang duoi day liet ke cac tai khoan demo de kiem thu he thong.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|l|l|l|l|}
+\hline
+STT & Vai tro & Email & Mat khau & Ghi chu \\
+\hline
+1 & Admin & admin@admin.com & admin123 & Quyen quan tri \\
+\hline
+2 & Benh nhan & patient@gmail.com & 123456 & Tai khoan benh nhan \\
+\hline
+3 & Sinh vien & student@university.edu.vn & 123456 & Da xac thuc \\
+\hline
+\end{tabular}
+\caption*{Bang C.1 Danh sach tai khoan demo}
+\end{table}
+
+
+\section*{Bang 4 Phu luc D Cau truc thu muc du an}
+\addcontentsline{toc}{section}{Phu luc D. Cau truc thu muc du an}
+
+Bang duoi day mo ta cau truc thu muc chinh cua du an.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{3.5cm}|p{6.5cm}|}
+\hline
+STT & Thu muc/File & Mo ta \\
+\hline
+1 & api/ & Chua cac file xu ly API \\
+\hline
+2 & assets/ & Chua tai nguyen tinh (css/, js/, images/) \\
+\hline
+3 & uploads/ & Chua file upload \\
+\hline
+4 & config.php & File cau hinh ket noi database \\
+\hline
+5 & header.php, footer.php & File giao dien chung \\
+\hline
+6 & index.php & Trang chu \\
+\hline
+7 & login.php, register.php & Trang dang nhap, dang ky \\
+\hline
+8 & dashboard\_patient.php & Bang dieu khien benh nhan \\
+\hline
+9 & dashboard\_student.php & Bang dieu khien sinh vien \\
+\hline
+10 & admin\_dashboard.php & Bang dieu khien quan tri \\
+\hline
+11 & Dockerfile & File cau hinh Docker \\
+\hline
+12 & database.sql & File khoi tao co so du lieu \\
+\hline
+\end{tabular}
+\caption*{Bang D.1 Cau truc thu muc du an}
+\end{table}
+\end{table}
+
+\section*{Bang 5 Phu luc E Huong dan trien khai he thong}
+\addcontentsline{toc}{section}{Phu luc E. Huong dan trien khai he thong}
+
+Bang duoi day mo ta cac buoc trien khai he thong voi Docker va XAMPP.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{2cm}|p{8cm}|}
+\hline
+STT & Phuong thuc & Cac buoc thuc hien \\
+\hline
+1 & Docker & 1. Cai dat Docker. 2. Clone source. 3. Chay: docker-compose up -d. 4. Truy cap localhost:3000 \\
+\hline
+2 & XAMPP & 1. Cai dat XAMPP. 2. Copy source vao htdocs. 3. Khoi dong Apache, MySQL. 4. Import database.sql. 5. Truy cap localhost/DACN1 \\
+\hline
+\end{tabular}
+\caption*{Bang E.1 Huong dan trien khai he thong}
+\end{table}
+
+
+\section*{Bang 6 Phu luc F Luu tru ma nguon}
+\addcontentsline{toc}{section}{Phu luc F. Luu tru ma nguon}
+
+Bang duoi day mo ta thong tin luu tru ma nguon tren GitHub.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|c|p{3cm}|p{7cm}|}
+\hline
+STT & Thong tin & Chi tiet \\
+\hline
+1 & Nen tang & GitHub \\
+\hline
+2 & Lien ket & github.com/tramtankha/DACN1-KetNoiYTe \\
+\hline
+3 & Backend & Ma nguon PHP, MySQL \\
+\hline
+4 & Frontend & HTML, CSS, Bootstrap, JavaScript \\
+\hline
+5 & Cau hinh & Docker, docker-compose.yml \\
+\hline
+6 & Tai lieu & README.md, huong dan cai dat \\
+\hline
+\end{tabular}
+\caption*{Bang F.1 Thong tin luu tru ma nguon}
+\end{table}
+

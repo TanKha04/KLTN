@@ -1,0 +1,9 @@
+# Tăng giới hạn upload file
+php_value upload_max_filesize 100M
+php_value post_max_size 100M
+php_value max_execution_time 300
+php_value max_input_time 300
+php_value memory_limit 256M
+
+# Enable mod_rewrite
+RewriteEngine On

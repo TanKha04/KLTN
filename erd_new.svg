@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1100">
+  <defs>
+    <style>
+      .entity { fill: #9FE0E0; stroke: #2a2a2a; stroke-width: 0.7; }
+      .entity-header { fill: #7FCFCF; stroke: #2a2a2a; stroke-width: 0.7; }
+      .rel-ellipse { fill: #C8C0D8; stroke: #2a2a2a; stroke-width: 0.7; }
+      .text { font-family: Arial, sans-serif; font-size: 8px; fill: #000; }
+      .text-header { font-family: Arial, sans-serif; font-size: 9px; fill: #000; font-weight: bold; }
+      .text-small { font-family: Arial, sans-serif; font-size: 6px; fill: #333; }
+      .text-rel { font-family: Arial, sans-serif; font-size: 7px; fill: #000; }
+      .text-type { font-family: Arial, sans-serif; font-size: 7px; fill: #000; }
+      .line { stroke: #2a2a2a; stroke-width: 0.7; fill: none; }
+      .pk { text-decoration: underline; }
+    </style>
+  </defs>
+
+  <!-- ==================== USER Entity (Center) ==================== -->
+  <g transform="translate(520, 280)">
+    <rect class="entity-header" x="0" y="0" width="170" height="18"/>
+    <text class="text-header" x="85" y="13" text-anchor="middle">USER</text>
+    <rect class="entity" x="0" y="18" width="170" height="130"/>
+    <text class="text pk" x="5" y="32">id</text>
+    <text class="text-small" x="40" y="32">&lt;pk&gt;</text>
+    <text class="text-type" x="70" y="32">int(11)</text>
+    <text class="text-small" x="130" y="32">&lt;M&gt;</text>
+    <text class="text" x="5" y="44">Fullname</text>
+    <text class="text-type" x="70" y="44">varchar(50)</text>
+    <text class="text" x="5" y="56">Email</text>
+    <text class="text-type" x="70" y="56">varchar(60)</text>
+    <text class="text" x="5" y="68">Role</text>
+    <text class="text-type" x="70" y="68">varchar(20)</text>
+    <text class="text" x="5" y="80">Isactive</text>
+    <text class="text-type" x="70" y="80">Boolean</text>
+    <text class="text" x="5" y="92">SDT</text>
+    <text class="text-type" x="70" y="92">varchar(10)</text>
+    <text class="text" x="5" y="104">Address</text>
+    <text class="text-type" x="70" y="104">varchar(50)</text>
+    <line x1="0" y1="140" x2="170" y2="140" class="line"/>
+    <text class="text-small" x="5" y="145">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- ==================== POST Entity ==================== -->
+  <g transform="translate(520, 580)">
+    <rect class="entity-header" x="0" y="0" width="170" height="18"/>
+    <text class="text-header" x="85" y="13" text-anchor="middle">POST</text>
+    <rect class="entity" x="0" y="18" width="170" height="95"/>
+    <text class="text pk" x="5" y="32">id</text>
+    <text class="text-small" x="40" y="32">&lt;pk&gt;</text>
+    <text class="text-type" x="70" y="32">int(11)</text>
+    <text class="text-small" x="130" y="32">&lt;M&gt;</text>
+    <text class="text" x="5" y="44">Title</text>
+    <text class="text-type" x="70" y="44">varchar(100)</text>
+    <text class="text" x="5" y="56">Description</text>
+    <text class="text-type" x="70" y="56">Text</text>
+    <text class="text" x="5" y="68">Price</text>
+    <text class="text-type" x="70" y="68">Float</text>
+    <text class="text" x="5" y="80">CreatedAt</text>
+    <text class="text-type" x="70" y="80">Date</text>
+    <line x1="0" y1="105" x2="170" y2="105" class="line"/>
+    <text class="text-small" x="5" y="110">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- ==================== COMMENT Entity ==================== -->
+  <g transform="translate(150, 250)">
+    <rect class="entity-header" x="0" y="0" width="150" height="18"/>
+    <text class="text-header" x="75" y="13" text-anchor="middle">COMMENT</text>
+    <rect class="entity" x="0" y="18" width="150" height="70"/>
+    <text class="text pk" x="5" y="32">id</text>
+    <text class="text-small" x="35" y="32">&lt;pk&gt;</text>
+    <text class="text-type" x="65" y="32">int(11)</text>
+    <text class="text-small" x="115" y="32">&lt;M&gt;</text>
+    <text class="text" x="5" y="44">Content</text>
+    <text class="text-type" x="65" y="44">Text</text>
+    <text class="text" x="5" y="56">CreatedAt</text>
+    <text class="text-type" x="65" y="56">Date</text>
+    <line x1="0" y1="80" x2="150" y2="80" class="line"/>
+    <text class="text-small" x="5" y="85">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- ==================== REPORT Entity ==================== -->
+  <g transform="translate(520, 30)">
+    <rect class="entity-header" x="0" y="0" width="170" height="18"/>
+    <text class="text-header" x="85" y="13" text-anchor="middle">REPORT</text>
+    <rect class="entity" x="0" y="18" width="170" height="95"/>
+    <text class="text pk" x="5" y="32">id_R</text>
+    <text class="text-small" x="45" y="32">&lt;pk&gt;</text>
+    <text class="text-type" x="75" y="32">int(11)</text>
+    <text class="text-small" x="130" y="32">&lt;M&gt;</text>
+    <text class="text" x="5" y="44">Reason</text>
+    <text class="text-type" x="75" y="44">Text</text>
+    <text class="text" x="5" y="56">ReportType</text>
+    <text class="text-type" x="75" y="56">varchar(50)</text>
+    <text class="text" x="5" y="68">Status</text>
+    <text class="text-type" x="75" y="68">varchar(50)</text>
+    <text class="text" x="5" y="80">CreatedAt</text>
+    <text class="text-type" x="75" y="80">Date</text>
+    <line x1="0" y1="105" x2="170" y2="105" class="line"/>
+    <text class="text-small" x="5" y="110">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- ==================== MESSAGE Entity ==================== -->
+  <g transform="translate(950, 180)">
+    <rect class="entity-header" x="0" y="0" width="150" height="18"/>
+    <text class="text-header" x="75" y="13" text-anchor="middle">MESSAGE</text>
+    <rect class="entity" x="0" y="18" width="150" height="70"/>
+    <text class="text pk" x="5" y="32">id_m</text>
+    <text class="text-small" x="40" y="32">&lt;pk&gt;</text>
+    <text class="text-type" x="70" y="32">int(11)</text>
+    <text class="text-small" x="115" y="32">&lt;M&gt;</text>
+    <text class="text" x="5" y="44">Content</text>
+    <text class="text-type" x="70" y="44">Text</text>
+    <text class="text" x="5" y="56">CreatedAt</text>
+    <text class="text-type" x="70" y="56">Date</text>
+    <line x1="0" y1="80" x2="150" y2="80" class="line"/>
+    <text class="text-small" x="5" y="85">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- =
+=================== POST_TYPE Entity ==================== -->
+  <g transform="translate(100, 480)">
+    <rect class="entity-header" x="0" y="0" width="150" height="18"/>
+    <text class="text-header" x="75" y="13" text-anchor="middle">POST_TYPE</text>
+    <rect class="entity" x="0" y="18" width="150" height="70"/>
+    <text class="text pk" x="5" y="32">id_PT</text>
+    <text class="text-small" x="45" y="32">&lt;pk&gt;</text>
+    <text class="text-type" x="75" y="32">int(11)</text>
+    <text class="text-small" x="115" y="32">&lt;M&gt;</text>
+    <text class="text" x="5" y="44">Name</text>
+    <text class="text-type" x="75" y="44">varchar(50)</text>
+    <text class="text" x="5" y="56">Description</text>
+    <text class="text-type" x="75" y="56">Text</text>
+    <line x1="0" y1="80" x2="150" y2="80" class="line"/>
+    <text class="text-small" x="5" y="85">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- ==================== bi_baocao Entity (Relationship table) ==================== -->
+  <g transform="translate(950, 450)">
+    <rect class="entity-header" x="0" y="0" width="150" height="18"/>
+    <text class="text-header" x="75" y="13" text-anchor="middle">bi_baocao</text>
+    <rect class="entity" x="0" y="18" width="150" height="40"/>
+    <line x1="0" y1="50" x2="150" y2="50" class="line"/>
+    <text class="text-small" x="5" y="55">Identifier_1 &lt;pi&gt;</text>
+  </g>
+
+  <!-- ==================== RELATIONSHIPS (Ellipse/Oval - Purple/Gray color) ==================== -->
+  
+  <!-- Bi_bao_cao (top left) -->
+  <ellipse class="rel-ellipse" cx="380" cy="120" rx="45" ry="20"/>
+  <text class="text-rel" x="380" y="124" text-anchor="middle">Bi_bao_cao</text>
+  <line class="line" x1="380" y1="100" x2="520" y2="60"/>
+  <line class="line" x1="380" y1="140" x2="380" y2="250"/>
+  <text class="text-small" x="440" y="75">1,1</text>
+  <text class="text-small" x="388" y="200">0,n</text>
+
+  <!-- viet -->
+  <ellipse class="rel-ellipse" cx="400" cy="310" rx="30" ry="18"/>
+  <text class="text-rel" x="400" y="314" text-anchor="middle">viet</text>
+  <line class="line" x1="300" y1="310" x2="370" y2="310"/>
+  <line class="line" x1="430" y1="310" x2="520" y2="310"/>
+  <text class="text-small" x="330" y="302">0,n</text>
+  <text class="text-small" x="470" y="302">1,1</text>
+
+  <!-- bao_cao -->
+  <ellipse class="rel-ellipse" cx="720" cy="180" rx="40" ry="18"/>
+  <text class="text-rel" x="720" y="184" text-anchor="middle">bao_cao</text>
+  <line class="line" x1="690" y1="125" x2="720" y2="162"/>
+  <line class="line" x1="720" y1="198" x2="690" y2="280"/>
+  <text class="text-small" x="700" y="145">1,1</text>
+  <text class="text-small" x="700" y="240">0,n</text>
+
+  <!-- gui -->
+  <ellipse class="rel-ellipse" cx="850" cy="250" rx="28" ry="18"/>
+  <text class="text-rel" x="850" y="254" text-anchor="middle">gui</text>
+  <line class="line" x1="690" y1="320" x2="822" y2="250"/>
+  <line class="line" x1="878" y1="250" x2="950" y2="230"/>
+  <text class="text-small" x="750" y="280">1,1</text>
+  <text class="text-small" x="910" y="235">0,n</text>
+
+  <!-- co -->
+  <ellipse class="rel-ellipse" cx="350" cy="450" rx="25" ry="18"/>
+  <text class="text-rel" x="350" y="454" text-anchor="middle">co</text>
+  <line class="line" x1="250" y1="500" x2="350" y2="468"/>
+  <line class="line" x1="350" y1="432" x2="350" y2="338"/>
+  <text class="text-small" x="290" y="490">0,n</text>
+  <text class="text-small" x="358" y="380">1,1</text>
+
+  <!-- dang -->
+  <ellipse class="rel-ellipse" cx="720" cy="450" rx="32" ry="18"/>
+  <text class="text-rel" x="720" y="454" text-anchor="middle">dang</text>
+  <line class="line" x1="690" y1="410" x2="720" y2="432"/>
+  <line class="line" x1="720" y1="468" x2="690" y2="580"/>
+  <text class="text-small" x="700" y="420">0,n</text>
+  <text class="text-small" x="700" y="530">1,1</text>
+
+  <!-- bi_baocao (right side) -->
+  <ellipse class="rel-ellipse" cx="850" cy="400" rx="45" ry="18"/>
+  <text class="text-rel" x="850" y="404" text-anchor="middle">bi_baocao</text>
+  <line class="line" x1="690" y1="380" x2="805" y2="400"/>
+  <line class="line" x1="895" y1="400" x2="950" y2="450"/>
+  <text class="text-small" x="740" y="385">0,n</text>
+  <text class="text-small" x="920" y="420">0,n</text>
+
+  <!-- Thuoc -->
+  <ellipse class="rel-ellipse" cx="300" cy="580" rx="35" ry="18"/>
+  <text class="text-rel" x="300" y="584" text-anchor="middle">Thuoc</text>
+  <line class="line" x1="250" y1="550" x2="300" y2="562"/>
+  <line class="line" x1="300" y1="598" x2="300" y2="650"/>
+  <line class="line" x1="335" y1="580" x2="520" y2="620"/>
+  <text class="text-small" x="260" y="545">0,n</text>
+  <text class="text-small" x="308" y="630">1,1</text>
+
+</svg>

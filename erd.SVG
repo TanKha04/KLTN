@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1800 1400">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f0f9ff"/>
+      <stop offset="100%" style="stop-color:#e0f2fe"/>
+    </linearGradient>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e40af"/>
+      <stop offset="100%" style="stop-color:#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="headerGreen" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#047857"/>
+      <stop offset="100%" style="stop-color:#10b981"/>
+    </linearGradient>
+    <linearGradient id="headerPurple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#6d28d9"/>
+      <stop offset="100%" style="stop-color:#8b5cf6"/>
+    </linearGradient>
+    <linearGradient id="headerOrange" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#c2410c"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+    <linearGradient id="headerPink" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#be185d"/>
+      <stop offset="100%" style="stop-color:#ec4899"/>
+    </linearGradient>
+    <linearGradient id="headerCyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0e7490"/>
+      <stop offset="100%" style="stop-color:#06b6d4"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-opacity="0.15"/>
+    </filter>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1800" height="1400" fill="url(#bgGrad)"/>
+  
+  <!-- Title -->
+  <text x="900" y="45" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" font-weight="bold" fill="#1e40af">
+    SƠ ĐỒ ERD - HỆ THỐNG KẾT NỐI Y TẾ
+  </text>
+  <text x="900" y="75" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" fill="#64748b">
+    Entity Relationship Diagram - Kết nối Bệnh nhân và Sinh viên Y khoa
+  </text>
+
+  <!-- ========== ENTITY: USERS (Central) ========== -->
+  <g transform="translate(750, 120)" filter="url(#shadow)">
+    <rect width="300" height="340" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
+    <rect width="300" height="40" rx="12" fill="url(#headerGrad)"/>
+    <rect x="0" y="28" width="300" height="12" fill="url(#headerGrad)"/>
+    <text x="150" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">USERS</text>
+    <line x1="0" y1="40" x2="300" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   name VARCHAR(150)</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   email VARCHAR(255) UQ</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   email_verified TINYINT</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   facebook_id VARCHAR(64)</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   password VARCHAR(255)</text>
+    <text x="15" y="170" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   role ENUM(patient,student)</text>
+    <text x="15" y="188" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   bio TEXT</text>
+    <text x="15" y="206" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   location VARCHAR(255)</text>
+    <text x="15" y="224" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   phone VARCHAR(50)</text>
+    <text x="15" y="242" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   avatar VARCHAR(255)</text>
+    <text x="15" y="260" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   student_id VARCHAR(100)</text>
+    <text x="15" y="278" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   verified TINYINT</text>
+    <text x="15" y="296" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   is_admin TINYINT</text>
+    <text x="15" y="314" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   can_post TINYINT</text>
+    <text x="15" y="332" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   last_login, last_activity</text>
+  </g>
+
+  <!-- ========== ENTITY: POSTS ========== -->
+  <g transform="translate(100, 120)" filter="url(#shadow)">
+    <rect width="280" height="320" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+    <rect width="280" height="40" rx="12" fill="url(#headerGreen)"/>
+    <rect x="0" y="28" width="280" height="12" fill="url(#headerGreen)"/>
+    <text x="140" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">POSTS</text>
+    <line x1="0" y1="40" x2="280" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   title VARCHAR(255)</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   content TEXT</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   type ENUM(recruitment,</text>
+    <text x="15" y="150" font-family="Consolas, monospace" font-size="11" fill="#1e293b">        application)</text>
+    <text x="15" y="168" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   category VARCHAR(100)</text>
+    <text x="15" y="186" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   area VARCHAR(255)</text>
+    <text x="15" y="204" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   contact_info VARCHAR(255)</text>
+    <text x="15" y="222" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   card_image VARCHAR(255)</text>
+    <text x="15" y="240" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   student_fullname</text>
+    <text x="15" y="258" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   student_code, student_class</text>
+    <text x="15" y="276" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   recruiter_fullname</text>
+    <text x="15" y="294" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   suggested_price INT</text>
+    <text x="15" y="312" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM, created_at</text>
+  </g>
+  <
+!-- ========== ENTITY: MESSAGES ========== -->
+  <g transform="translate(1400, 120)" filter="url(#shadow)">
+    <rect width="280" height="180" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="280" height="40" rx="12" fill="url(#headerPurple)"/>
+    <rect x="0" y="28" width="280" height="12" fill="url(#headerPurple)"/>
+    <text x="140" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">MESSAGES</text>
+    <line x1="0" y1="40" x2="280" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 from_user INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 to_user INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 post_id INT FK (nullable)</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   message TEXT</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+
+  <!-- ========== ENTITY: COMMENTS ========== -->
+  <g transform="translate(100, 480)" filter="url(#shadow)">
+    <rect width="260" height="180" rx="12" fill="#ffffff" stroke="#f97316" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="url(#headerOrange)"/>
+    <rect x="0" y="28" width="260" height="12" fill="url(#headerOrange)"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">COMMENTS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 post_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 parent_id INT FK (self)</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   comment TEXT</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   is_hidden TINYINT</text>
+    <text x="15" y="170" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+
+  <!-- ========== ENTITY: FAVORITES ========== -->
+  <g transform="translate(400, 480)" filter="url(#shadow)">
+    <rect width="220" height="130" rx="12" fill="#ffffff" stroke="#ec4899" stroke-width="2"/>
+    <rect width="220" height="40" rx="12" fill="url(#headerPink)"/>
+    <rect x="0" y="28" width="220" height="12" fill="url(#headerPink)"/>
+    <text x="110" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">FAVORITES</text>
+    <line x1="0" y1="40" x2="220" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 user_id INT PK,FK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 post_id INT PK,FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+
+  <!-- ========== ENTITY: RATINGS ========== -->
+  <g transform="translate(660, 480)" filter="url(#shadow)">
+    <rect width="240" height="160" rx="12" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+    <rect width="240" height="40" rx="12" fill="url(#headerCyan)"/>
+    <rect x="0" y="28" width="240" height="12" fill="url(#headerCyan)"/>
+    <text x="120" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">RATINGS</text>
+    <line x1="0" y1="40" x2="240" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 rater_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 rated_id INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   score TINYINT (1-5)</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   comment TEXT</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+  
+<!-- ========== ENTITY: VERIFICATIONS ========== -->
+  <g transform="translate(940, 480)" filter="url(#shadow)">
+    <rect width="260" height="220" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="url(#headerGrad)"/>
+    <rect x="0" y="28" width="260" height="12" fill="url(#headerGrad)"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">VERIFICATIONS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   full_name VARCHAR(150)</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   student_code VARCHAR(100)</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   class_name VARCHAR(100)</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   address, phone</text>
+    <text x="15" y="170" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   document_card VARCHAR</text>
+    <text x="15" y="188" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   document_internship</text>
+    <text x="15" y="206" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM, admin_note</text>
+  </g>
+
+  <!-- ========== ENTITY: REPORTS ========== -->
+  <g transform="translate(1240, 480)" filter="url(#shadow)">
+    <rect width="260" height="220" rx="12" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="#dc2626"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">REPORTS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 reporter_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   target_type ENUM</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   target_id INT</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 post_id INT FK</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 reported_user_id FK</text>
+    <text x="15" y="170" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   reason_code VARCHAR(50)</text>
+    <text x="15" y="188" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   custom_reason, message</text>
+    <text x="15" y="206" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM, admin_note</text>
+  </g>
+
+  <!-- ========== ENTITY: CONVERSATIONS ========== -->
+  <g transform="translate(1520, 320)" filter="url(#shadow)">
+    <rect width="240" height="150" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="240" height="40" rx="12" fill="url(#headerPurple)"/>
+    <rect x="0" y="28" width="240" height="12" fill="url(#headerPurple)"/>
+    <text x="120" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">CONVERSATIONS</text>
+    <line x1="0" y1="40" x2="240" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user1_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user2_id INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   last_message_at</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+
+  <!-- ========== ENTITY: DIRECT_MESSAGES ========== -->
+  <g transform="translate(1520, 500)" filter="url(#shadow)">
+    <rect width="240" height="140" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="240" height="40" rx="12" fill="url(#headerPurple)"/>
+    <rect x="0" y="28" width="240" height="12" fill="url(#headerPurple)"/>
+    <text x="120" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">DIRECT_MESSAGES</text>
+    <line x1="0" y1="40" x2="240" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 conversation_id FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 sender_id INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   message TEXT</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+ 
+ <!-- ========== ENTITY: FRIENDSHIPS ========== -->
+  <g transform="translate(100, 720)" filter="url(#shadow)">
+    <rect width="240" height="160" rx="12" fill="#ffffff" stroke="#ec4899" stroke-width="2"/>
+    <rect width="240" height="40" rx="12" fill="url(#headerPink)"/>
+    <rect x="0" y="28" width="240" height="12" fill="url(#headerPink)"/>
+    <text x="120" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">FRIENDSHIPS</text>
+    <line x1="0" y1="40" x2="240" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 friend_id INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM(pending,</text>
+    <text x="15" y="132" font-family="Consolas, monospace" font-size="11" fill="#1e293b">        accepted,blocked)</text>
+    <text x="15" y="150" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at, accepted_at</text>
+  </g>
+
+  <!-- ========== ENTITY: APPOINTMENTS ========== -->
+  <g transform="translate(380, 720)" filter="url(#shadow)">
+    <rect width="260" height="180" rx="12" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="url(#headerCyan)"/>
+    <rect x="0" y="28" width="260" height="12" fill="url(#headerCyan)"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">APPOINTMENTS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 patient_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 student_id INT FK</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 post_id INT FK</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   scheduled_at DATETIME</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM(pending,</text>
+    <text x="15" y="168" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   confirmed,completed...)</text>
+  </g>
+
+  <!-- ========== ENTITY: EMAIL_VERIFICATIONS ========== -->
+  <g transform="translate(680, 720)" filter="url(#shadow)">
+    <rect width="260" height="160" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="url(#headerGreen)"/>
+    <rect x="0" y="28" width="260" height="12" fill="url(#headerGreen)"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">EMAIL_VERIFICATIONS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   token VARCHAR(128) UQ</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   expires_at DATETIME</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   used_at DATETIME</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at TIMESTAMP</text>
+  </g>
+
+  <!-- ========== ENTITY: POSTING_REQUESTS ========== -->
+  <g transform="translate(980, 720)" filter="url(#shadow)">
+    <rect width="260" height="200" rx="12" fill="#ffffff" stroke="#f97316" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="url(#headerOrange)"/>
+    <rect x="0" y="28" width="260" height="12" fill="url(#headerOrange)"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">POSTING_REQUESTS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   full_name VARCHAR(150)</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   student_code VARCHAR(100)</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   class_name VARCHAR(100)</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   address VARCHAR(255)</text>
+    <text x="15" y="170" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   document_card, internship</text>
+    <text x="15" y="188" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM, admin_note</text>
+  </g>
+  <
+!-- ========== ENTITY: ACCOUNT_REQUESTS ========== -->
+  <g transform="translate(1280, 720)" filter="url(#shadow)">
+    <rect width="260" height="180" rx="12" fill="#ffffff" stroke="#dc2626" stroke-width="2"/>
+    <rect width="260" height="40" rx="12" fill="#dc2626"/>
+    <text x="130" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">ACCOUNT_REQUESTS</text>
+    <line x1="0" y1="40" x2="260" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   request_type ENUM</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   (delete,update,other)</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   details TEXT</text>
+    <text x="15" y="152" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM</text>
+    <text x="15" y="170" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   admin_note, processed_at</text>
+  </g>
+
+  <!-- ========== ENTITY: USER_FEEDBACK ========== -->
+  <g transform="translate(100, 940)" filter="url(#shadow)">
+    <rect width="250" height="160" rx="12" fill="#ffffff" stroke="#06b6d4" stroke-width="2"/>
+    <rect width="250" height="40" rx="12" fill="url(#headerCyan)"/>
+    <rect x="0" y="28" width="250" height="12" fill="url(#headerCyan)"/>
+    <text x="125" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">USER_FEEDBACK</text>
+    <line x1="0" y1="40" x2="250" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   subject VARCHAR(255)</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   message TEXT</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   status ENUM(pending,</text>
+    <text x="15" y="150" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   in_progress,resolved)</text>
+  </g>
+
+  <!-- ========== ENTITY: KNOWLEDGE_POSTS ========== -->
+  <g transform="translate(390, 940)" filter="url(#shadow)">
+    <rect width="250" height="150" rx="12" fill="#ffffff" stroke="#10b981" stroke-width="2"/>
+    <rect width="250" height="40" rx="12" fill="url(#headerGreen)"/>
+    <rect x="0" y="28" width="250" height="12" fill="url(#headerGreen)"/>
+    <text x="125" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">KNOWLEDGE_POSTS</text>
+    <line x1="0" y1="40" x2="250" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   title VARCHAR(255)</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   content TEXT</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   approved TINYINT</text>
+  </g>
+
+  <!-- ========== ENTITY: FAQS ========== -->
+  <g transform="translate(680, 940)" filter="url(#shadow)">
+    <rect width="220" height="130" rx="12" fill="#ffffff" stroke="#8b5cf6" stroke-width="2"/>
+    <rect width="220" height="40" rx="12" fill="url(#headerPurple)"/>
+    <rect x="0" y="28" width="220" height="12" fill="url(#headerPurple)"/>
+    <text x="110" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="16" font-weight="bold" fill="#ffffff">FAQS</text>
+    <line x1="0" y1="40" x2="220" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   question VARCHAR(255)</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   answer TEXT</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   created_at, updated_at</text>
+  </g>
+
+  <!-- ========== ENTITY: PASSWORD_RESETS ========== -->
+  <g transform="translate(940, 940)" filter="url(#shadow)">
+    <rect width="250" height="150" rx="12" fill="#ffffff" stroke="#f97316" stroke-width="2"/>
+    <rect width="250" height="40" rx="12" fill="url(#headerOrange)"/>
+    <rect x="0" y="28" width="250" height="12" fill="url(#headerOrange)"/>
+    <text x="125" y="28" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#ffffff">PASSWORD_RESETS</text>
+    <line x1="0" y1="40" x2="250" y2="40" stroke="#e2e8f0" stroke-width="1"/>
+    <text x="15" y="62" font-family="Consolas, monospace" font-size="11" fill="#dc2626">🔑 id INT PK</text>
+    <text x="15" y="80" font-family="Consolas, monospace" font-size="11" fill="#f59e0b">🔗 user_id INT FK</text>
+    <text x="15" y="98" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   token VARCHAR(128) UQ</text>
+    <text x="15" y="116" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   expires_at DATETIME</text>
+    <text x="15" y="134" font-family="Consolas, monospace" font-size="11" fill="#1e293b">   used_at DATETIME</text>
+  </g>
+  <!-- ====
+====== RELATIONSHIPS (Lines) ========== -->
+  
+  <!-- USERS -> POSTS (1:N) -->
+  <path d="M 750 290 L 380 290" stroke="#10b981" stroke-width="2" fill="none" marker-end="url(#arrowGreen)"/>
+  <circle cx="750" cy="290" r="5" fill="#3b82f6"/>
+  <text x="565" y="283" font-family="Arial, sans-serif" font-size="10" fill="#10b981">1:N</text>
+
+  <!-- USERS -> MESSAGES (from_user) -->
+  <path d="M 1050 200 L 1400 180" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+  <circle cx="1050" cy="200" r="5" fill="#3b82f6"/>
+  <text x="1200" y="175" font-family="Arial, sans-serif" font-size="10" fill="#8b5cf6">1:N</text>
+
+  <!-- USERS -> MESSAGES (to_user) -->
+  <path d="M 1050 240 L 1400 220" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+  <circle cx="1050" cy="240" r="5" fill="#3b82f6"/>
+
+  <!-- POSTS -> MESSAGES -->
+  <path d="M 380 200 Q 700 100 1400 200" stroke="#8b5cf6" stroke-width="1.5" fill="none" stroke-dasharray="5,3"/>
+  <text x="850" y="115" font-family="Arial, sans-serif" font-size="10" fill="#8b5cf6">0:N</text>
+
+  <!-- USERS -> COMMENTS -->
+  <path d="M 750 400 L 360 520" stroke="#f97316" stroke-width="2" fill="none"/>
+  <circle cx="750" cy="400" r="5" fill="#3b82f6"/>
+  <text x="520" y="445" font-family="Arial, sans-serif" font-size="10" fill="#f97316">1:N</text>
+
+  <!-- POSTS -> COMMENTS -->
+  <path d="M 240 440 L 240 480" stroke="#f97316" stroke-width="2" fill="none"/>
+  <circle cx="240" cy="440" r="5" fill="#10b981"/>
+  <text x="250" y="465" font-family="Arial, sans-serif" font-size="10" fill="#f97316">1:N</text>
+
+  <!-- USERS -> FAVORITES -->
+  <path d="M 750 420 L 620 520" stroke="#ec4899" stroke-width="2" fill="none"/>
+  <circle cx="750" cy="420" r="5" fill="#3b82f6"/>
+
+  <!-- POSTS -> FAVORITES -->
+  <path d="M 380 400 L 500 480" stroke="#ec4899" stroke-width="2" fill="none"/>
+  <circle cx="380" cy="400" r="5" fill="#10b981"/>
+  <text x="430" y="430" font-family="Arial, sans-serif" font-size="10" fill="#ec4899">N:M</text>
+
+  <!-- USERS -> RATINGS (rater) -->
+  <path d="M 850 460 L 780 480" stroke="#06b6d4" stroke-width="2" fill="none"/>
+  <circle cx="850" cy="460" r="5" fill="#3b82f6"/>
+
+  <!-- USERS -> RATINGS (rated) -->
+  <path d="M 900 460 L 850 480" stroke="#06b6d4" stroke-width="2" fill="none"/>
+  <circle cx="900" cy="460" r="5" fill="#3b82f6"/>
+  <text x="820" y="455" font-family="Arial, sans-serif" font-size="10" fill="#06b6d4">N:N</text>
+
+  <!-- USERS -> VERIFICATIONS -->
+  <path d="M 1000 460 L 1070 480" stroke="#3b82f6" stroke-width="2" fill="none"/>
+  <circle cx="1000" cy="460" r="5" fill="#3b82f6"/>
+  <text x="1020" y="455" font-family="Arial, sans-serif" font-size="10" fill="#3b82f6">1:N</text>
+
+  <!-- USERS -> REPORTS -->
+  <path d="M 1050 350 L 1370 480" stroke="#dc2626" stroke-width="2" fill="none"/>
+  <circle cx="1050" cy="350" r="5" fill="#3b82f6"/>
+  <text x="1200" y="400" font-family="Arial, sans-serif" font-size="10" fill="#dc2626">1:N</text>
+
+  <!-- USERS -> CONVERSATIONS -->
+  <path d="M 1050 180 L 1520 380" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+  <circle cx="1050" cy="180" r="5" fill="#3b82f6"/>
+  <text x="1280" y="260" font-family="Arial, sans-serif" font-size="10" fill="#8b5cf6">N:N</text>
+
+  <!-- CONVERSATIONS -> DIRECT_MESSAGES -->
+  <path d="M 1640 470 L 1640 500" stroke="#8b5cf6" stroke-width="2" fill="none"/>
+  <circle cx="1640" cy="470" r="5" fill="#8b5cf6"/>
+  <text x="1650" y="490" font-family="Arial, sans-serif" font-size="10" fill="#8b5cf6">1:N</text>
+
+  <!-- USERS -> FRIENDSHIPS -->
+  <path d="M 750 460 L 340 720" stroke="#ec4899" stroke-width="2" fill="none"/>
+  <circle cx="750" cy="460" r="5" fill="#3b82f6"/>
+  <text x="500" y="580" font-family="Arial, sans-serif" font-size="10" fill="#ec4899">N:N</text>
+
+  <!-- USERS -> APPOINTMENTS -->
+  <path d="M 850 460 L 510 720" stroke="#06b6d4" stroke-width="2" fill="none"/>
+  <circle cx="850" cy="460" r="5" fill="#3b82f6"/>
+  <text x="660" y="580" font-family="Arial, sans-serif" font-size="10" fill="#06b6d4">1:N</text>
+
+  <!-- USERS -> EMAIL_VERIFICATIONS -->
+  <path d="M 900 460 L 810 720" stroke="#10b981" stroke-width="2" fill="none"/>
+  <circle cx="900" cy="460" r="5" fill="#3b82f6"/>
+  <text x="840" y="580" font-family="Arial, sans-serif" font-size="10" fill="#10b981">1:N</text>
+
+  <!-- USERS -> POSTING_REQUESTS -->
+  <path d="M 950 460 L 1110 720" stroke="#f97316" stroke-width="2" fill="none"/>
+  <circle cx="950" cy="460" r="5" fill="#3b82f6"/>
+  <text x="1010" y="580" font-family="Arial, sans-serif" font-size="10" fill="#f97316">1:N</text>
+
+  <!-- USERS -> ACCOUNT_REQUESTS -->
+  <path d="M 1000 460 L 1410 720" stroke="#dc2626" stroke-width="2" fill="none"/>
+  <circle cx="1000" cy="460" r="5" fill="#3b82f6"/>
+  <text x="1200" y="580" font-family="Arial, sans-serif" font-size="10" fill="#dc2626">1:N</text>
+
+  <!-- USERS -> USER_FEEDBACK -->
+  <path d="M 750 460 L 225 940" stroke="#06b6d4" stroke-width="2" fill="none"/>
+  <circle cx="750" cy="460" r="5" fill="#3b82f6"/>
+
+  <!-- USERS -> KNOWLEDGE_POSTS -->
+  <path d="M 800 460 L 515 940" stroke="#10b981" stroke-width="2" fill="none"/>
+  <circle cx="800" cy="460" r="5" fill="#3b82f6"/>
+
+  <!-- USERS -> PASSWORD_RESETS -->
+  <path d="M 950 460 L 1065 940" stroke="#f97316" stroke-width="2" fill="none"/>
+  <circle cx="950" cy="460" r="5" fill="#3b82f6"/>
+ 
+ <!-- ========== LEGEND ========== -->
+  <rect x="1230" y="940" width="530" height="200" rx="15" fill="#ffffff" stroke="#cbd5e1" stroke-width="2" filter="url(#shadow)"/>
+  <text x="1495" y="975" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#1e293b">CHÚ THÍCH (LEGEND)</text>
+  
+  <!-- PK Legend -->
+  <text x="1260" y="1010" font-family="Consolas, monospace" font-size="12" fill="#dc2626">🔑 PK</text>
+  <text x="1320" y="1010" font-family="Arial, sans-serif" font-size="12" fill="#475569">= Primary Key (Khóa chính)</text>
+  
+  <!-- FK Legend -->
+  <text x="1260" y="1035" font-family="Consolas, monospace" font-size="12" fill="#f59e0b">🔗 FK</text>
+  <text x="1320" y="1035" font-family="Arial, sans-serif" font-size="12" fill="#475569">= Foreign Key (Khóa ngoại)</text>
+  
+  <!-- UQ Legend -->
+  <text x="1260" y="1060" font-family="Consolas, monospace" font-size="12" fill="#1e293b">UQ</text>
+  <text x="1320" y="1060" font-family="Arial, sans-serif" font-size="12" fill="#475569">= Unique (Duy nhất)</text>
+
+  <!-- Relationship Types -->
+  <text x="1260" y="1090" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Quan hệ:</text>
+  
+  <line x1="1260" y1="1110" x2="1310" y2="1110" stroke="#3b82f6" stroke-width="2"/>
+  <circle cx="1260" cy="1110" r="4" fill="#3b82f6"/>
+  <text x="1320" y="1115" font-family="Arial, sans-serif" font-size="11" fill="#475569">1:N (Một - Nhiều)</text>
+
+  <line x1="1500" y1="1110" x2="1550" y2="1110" stroke="#ec4899" stroke-width="2"/>
+  <circle cx="1500" cy="1110" r="4" fill="#ec4899"/>
+  <circle cx="1550" cy="1110" r="4" fill="#ec4899"/>
+  <text x="1560" y="1115" font-family="Arial, sans-serif" font-size="11" fill="#475569">N:M (Nhiều - Nhiều)</text>
+
+  <!-- Entity Colors -->
+  <text x="1260" y="1140" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#1e293b">Màu Entity:</text>
+  
+  <rect x="1260" y="1150" width="50" height="16" rx="3" fill="url(#headerGrad)"/>
+  <text x="1320" y="1163" font-family="Arial, sans-serif" font-size="10" fill="#475569">Users/Core</text>
+  
+  <rect x="1400" y="1150" width="50" height="16" rx="3" fill="url(#headerGreen)"/>
+  <text x="1460" y="1163" font-family="Arial, sans-serif" font-size="10" fill="#475569">Posts/Content</text>
+  
+  <rect x="1540" y="1150" width="50" height="16" rx="3" fill="url(#headerPurple)"/>
+  <text x="1600" y="1163" font-family="Arial, sans-serif" font-size="10" fill="#475569">Messages</text>
+  
+  <rect x="1680" y="1150" width="50" height="16" rx="3" fill="url(#headerOrange)"/>
+  <text x="1680" y="1130" font-family="Arial, sans-serif" font-size="10" fill="#475569">Requests</text>
+
+  <!-- Statistics -->
+  <rect x="50" y="1120" width="300" height="80" rx="12" fill="#ffffff" stroke="#3b82f6" stroke-width="2" filter="url(#shadow)"/>
+  <text x="200" y="1150" text-anchor="middle" font-family="Arial, sans-serif" font-size="14" font-weight="bold" fill="#1e40af">THỐNG KÊ</text>
+  <text x="70" y="1175" font-family="Arial, sans-serif" font-size="12" fill="#475569">• Tổng số bảng: 17 entities</text>
+  <text x="70" y="1195" font-family="Arial, sans-serif" font-size="12" fill="#475569">• Bảng trung tâm: USERS (liên kết 15+ bảng)</text>
+
+  <!-- Footer -->
+  <text x="900" y="1250" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" fill="#94a3b8">
+    Hệ thống Kết nối Y tế - Entity Relationship Diagram
+  </text>
+
+</svg>

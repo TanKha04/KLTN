@@ -1,0 +1,11 @@
+.git
+.vscode
+*.md
+*.tex
+*.zip
+*.pdf
+*.txt
+node_modules
+.env
+.DS_Store
+Thumbs.db

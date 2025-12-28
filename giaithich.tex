@@ -1,0 +1,582 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{hyperref}
+
+\geometry{left=2.5cm,right=2cm,top=2cm,bottom=2cm}
+
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    backgroundcolor=\color{gray!10}
+}
+
+\title{\textbf{GIẢI THÍCH CHI TIẾT CẤU TRÚC DỰ ÁN}\\[0.5cm]
+\large Website Kết Nối Y Tế Giữa Bệnh Nhân Và Sinh Viên Y Khoa}
+\author{Sinh viên: Trầm Tấn Khá - MSSV: 110122087}
+\date{Tháng 11/2025}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+% ============================================================
+\section{TỔNG QUAN KIẾN TRÚC HỆ THỐNG}
+% ============================================================
+
+\subsection{Mô hình kiến trúc}
+
+Dự án sử dụng kiến trúc \textbf{Monolithic MVC-like} với PHP thuần:
+
+\begin{itemize}
+    \item \textbf{Model:} Các truy vấn SQL trực tiếp qua PDO trong từng file PHP
+    \item \textbf{View:} HTML được nhúng trực tiếp trong các file PHP
+    \item \textbf{Controller:} Logic xử lý nằm trong phần đầu của mỗi file PHP
+\end{itemize}
+
+\subsection{Công nghệ sử dụng}
+
+\begin{table}[h]
+\centering
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Thành phần} & \textbf{Công nghệ} & \textbf{Phiên bản} \\
+\hline
+Backend & PHP & 7.4+ \\
+Database & MySQL/MariaDB & 5.7+ \\
+Frontend Framework & Bootstrap & 5.3.2 \\
+Icons & Bootstrap Icons & 1.11.3 \\
+Icons (bổ sung) & Font Awesome & 6.5.1 \\
+Web Server & Apache (XAMPP) & 2.4+ \\
+\hline
+\end{tabular}
+\caption{Công nghệ sử dụng trong dự án}
+\end{table}
+
+% ============================================================
+\section{PHÂN LOẠI FILE: FRONTEND VS BACKEND}
+% ============================================================
+
+\subsection{Giải thích khái niệm}
+
+\begin{itemize}
+    \item \textbf{Frontend (Giao diện):} Phần hiển thị cho người dùng - HTML, CSS, JavaScript
+    \item \textbf{Backend (Xử lý phía server):} Logic nghiệp vụ, truy vấn database, xác thực - PHP
+\end{itemize}
+
+\textbf{Lưu ý:} Trong dự án PHP thuần này, hầu hết các file đều là \textbf{Full-stack} (kết hợp cả Frontend và Backend trong cùng một file).
+
+\subsection{Bảng phân loại chi tiết các file}
+
+\begin{longtable}{|p{4.5cm}|p{2cm}|p{8cm}|}
+\hline
+\textbf{Tên File} & \textbf{Loại} & \textbf{Chức năng} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Tên File} & \textbf{Loại} & \textbf{Chức năng} \\
+\hline
+\endhead
+
+\multicolumn{3}{|c|}{\textbf{FILE CẤU HÌNH VÀ TIỆN ÍCH (BACKEND THUẦN)}} \\
+\hline
+config.php & Backend & Cấu hình database, session, hàm tiện ích (is\_logged\_in, require\_login, is\_admin\_user), tự động cập nhật schema database \\
+\hline
+email\_helper.php & Backend & Gửi email qua SMTP (PHPMailer), xác thực email, reset mật khẩu \\
+\hline
+database.sql & Backend & Script tạo cấu trúc database, các bảng và quan hệ \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{FILE GIAO DIỆN CHUNG (FRONTEND THUẦN)}} \\
+\hline
+header.php & Frontend & Navbar, menu điều hướng, dropdown user, responsive design \\
+\hline
+footer.php & Frontend & Footer trang, script Bootstrap JS, xử lý back/forward navigation \\
+\hline
+assets/css/style.css & Frontend & CSS tùy chỉnh, theme màu sắc, responsive styles \\
+\hline
+chatbot\_widget.php & Frontend & Widget chatbot AI hỗ trợ người dùng \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{TRANG CÔNG KHAI (FULL-STACK)}} \\
+\hline
+index.php & Full-stack & Trang chủ, hiển thị danh sách tin, tìm kiếm/lọc tin theo type, category, area \\
+\hline
+login.php & Full-stack & Đăng nhập, xác thực user, tạo session, cập nhật last\_login \\
+\hline
+register.php & Full-stack & Đăng ký tài khoản, tự động phân quyền theo email (.edu.vn = student) \\
+\hline
+logout.php & Backend & Hủy session, đăng xuất người dùng \\
+\hline
+view\_post.php & Full-stack & Xem chi tiết bài đăng, hiển thị thông tin liên hệ, nút nhắn tin \\
+\hline
+view\_profile.php & Full-stack & Xem hồ sơ công khai của người dùng khác \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{XÁC THỰC VÀ BẢO MẬT (FULL-STACK)}} \\
+\hline
+verify\_email.php & Full-stack & Xác thực email qua token, kích hoạt tài khoản \\
+\hline
+resend\_verification.php & Full-stack & Gửi lại email xác thực \\
+\hline
+forgot\_password.php & Full-stack & Yêu cầu reset mật khẩu, gửi email token \\
+\hline
+reset\_password.php & Full-stack & Đặt lại mật khẩu mới qua token \\
+\hline
+facebook\_login.php & Backend & Khởi tạo OAuth Facebook login \\
+\hline
+facebook\_callback.php & Backend & Xử lý callback từ Facebook, tạo/liên kết tài khoản \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{DASHBOARD NGƯỜI DÙNG (FULL-STACK)}} \\
+\hline
+dashboard\_patient.php & Full-stack & Bảng điều khiển bệnh nhân: tin đã đăng, tin yêu thích, thống kê \\
+\hline
+dashboard\_student.php & Full-stack & Bảng điều khiển sinh viên: tin ứng tuyển, trạng thái xác thực, lịch sử \\
+\hline
+profile.php & Full-stack & Xem hồ sơ cá nhân của chính mình \\
+\hline
+edit\_profile.php & Full-stack & Chỉnh sửa thông tin cá nhân, upload avatar \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{QUẢN LÝ BÀI ĐĂNG (FULL-STACK)}} \\
+\hline
+create\_recruitment.php & Full-stack & Tạo tin tuyển dụng (dành cho bệnh nhân) \\
+\hline
+create\_application.php & Full-stack & Tạo tin ứng tuyển (dành cho sinh viên đã xác thực) \\
+\hline
+edit\_post.php & Full-stack & Chỉnh sửa bài đăng của mình \\
+\hline
+delete\_post.php & Backend & Xóa bài đăng \\
+\hline
+toggle\_post\_status.php & Backend & Đổi trạng thái bài đăng (open/closed/taken) \\
+\hline
+reopen\_post.php & Backend & Mở lại bài đăng đã đóng \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{HỆ THỐNG TIN NHẮN (FULL-STACK)}} \\
+\hline
+chat.php & Full-stack & Giao diện chat real-time giữa 2 người dùng \\
+\hline
+conversations.php & Full-stack & Danh sách các cuộc hội thoại \\
+\hline
+view\_messages.php & Full-stack & Xem tin nhắn liên quan đến bài đăng \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{TÍNH NĂNG XÃ HỘI (FULL-STACK)}} \\
+\hline
+friends.php & Full-stack & Quản lý danh sách bạn bè, lời mời kết bạn \\
+\hline
+friend\_action.php & Backend & Xử lý action: gửi/chấp nhận/từ chối/hủy kết bạn \\
+\hline
+favorites.php & Full-stack & Danh sách bài đăng yêu thích \\
+\hline
+toggle\_favorite.php & Backend & Thêm/xóa bài đăng khỏi danh sách yêu thích \\
+\hline
+add\_comment.php & Backend & Thêm bình luận vào bài đăng \\
+\hline
+rate.php & Full-stack & Đánh giá người dùng (1-5 sao) \\
+\hline
+report.php & Full-stack & Báo cáo vi phạm bài đăng/bình luận \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{XÁC THỰC SINH VIÊN (FULL-STACK)}} \\
+\hline
+request\_verification.php & Full-stack & Gửi yêu cầu xác thực sinh viên (upload thẻ SV) \\
+\hline
+request\_posting\_permission.php & Full-stack & Xin cấp quyền đăng tin (sau khi xác thực) \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{HỖ TRỢ NGƯỜI DÙNG (FULL-STACK)}} \\
+\hline
+account\_request.php & Full-stack & Gửi yêu cầu hỗ trợ tài khoản (xóa, sửa thông tin) \\
+\hline
+support\_center.php & Full-stack & Trung tâm hỗ trợ, FAQ \\
+\hline
+contact.php & Full-stack & Form liên hệ \\
+\hline
+privacy.php & Full-stack & Chính sách bảo mật \\
+\hline
+terms.php & Full-stack & Điều khoản sử dụng \\
+\hline
+data\_deletion.php & Full-stack & Yêu cầu xóa dữ liệu (GDPR compliance) \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{TRANG QUẢN TRỊ - ADMIN (FULL-STACK)}} \\
+\hline
+admin.php & Full-stack & Redirect đến admin\_dashboard.php \\
+\hline
+admin\_dashboard.php & Full-stack & Bảng điều khiển admin: thống kê tổng quan, biểu đồ \\
+\hline
+admin\_users.php & Full-stack & Quản lý người dùng: xem, khóa, xóa, cấp quyền \\
+\hline
+admin\_posts.php & Full-stack & Quản lý bài đăng: duyệt, ẩn, xóa, tạo tin mới \\
+\hline
+admin\_verifications.php & Full-stack & Xử lý yêu cầu xác thực sinh viên: duyệt/từ chối \\
+\hline
+admin\_reports.php & Full-stack & Xem và xử lý báo cáo vi phạm \\
+\hline
+admin\_favorites.php & Full-stack & Xem thống kê bài đăng được yêu thích \\
+\hline
+admin\_send\_notification.php & Full-stack & Gửi thông báo đến người dùng \\
+\hline
+create\_admin.php & Backend & Script tạo tài khoản admin (chạy 1 lần) \\
+\hline
+
+\multicolumn{3}{|c|}{\textbf{LỊCH SỬ VÀ THỐNG KÊ}} \\
+\hline
+assignment\_history.php & Full-stack & Lịch sử nhận việc/giao việc \\
+\hline
+
+\end{longtable}
+
+% ============================================================
+\section{CHI TIẾT CHỨC NĂNG CÁC FILE QUAN TRỌNG}
+% ============================================================
+
+\subsection{config.php - File cấu hình trung tâm}
+
+\textbf{Chức năng Backend:}
+\begin{itemize}
+    \item Kết nối database MySQL qua PDO
+    \item Quản lý session (session\_start)
+    \item Cấu hình SMTP để gửi email
+    \item Cấu hình Facebook OAuth
+    \item Các hàm tiện ích:
+    \begin{itemize}
+        \item \texttt{is\_logged\_in()}: Kiểm tra đăng nhập
+        \item \texttt{require\_login()}: Bắt buộc đăng nhập
+        \item \texttt{is\_admin\_user()}: Kiểm tra quyền admin
+        \item \texttt{require\_admin()}: Bắt buộc quyền admin
+        \item \texttt{is\_student\_verified()}: Kiểm tra sinh viên đã xác thực
+        \item \texttt{is\_user\_online()}: Kiểm tra trạng thái online
+        \item \texttt{ensure\_schema\_updates()}: Tự động cập nhật cấu trúc DB
+    \end{itemize}
+\end{itemize}
+
+\subsection{header.php - Thanh điều hướng}
+
+\textbf{Chức năng Frontend:}
+\begin{itemize}
+    \item Navbar responsive với Bootstrap 5
+    \item Logo và tên ứng dụng
+    \item Menu điều hướng động theo vai trò (patient/student/admin)
+    \item Dropdown menu người dùng với avatar
+    \item Hiển thị trạng thái online
+    \item Link đến các chức năng: Dashboard, Chat, Hồ sơ, Đăng xuất
+\end{itemize}
+
+\subsection{index.php - Trang chủ}
+
+\textbf{Backend:}
+\begin{itemize}
+    \item Truy vấn danh sách bài đăng từ database
+    \item Xử lý tìm kiếm theo: từ khóa (q), loại tin (type), danh mục (category), khu vực (area)
+    \item Join bảng users để lấy thông tin tác giả
+\end{itemize}
+
+\textbf{Frontend:}
+\begin{itemize}
+    \item Hero section với hình ảnh và thống kê
+    \item Form tìm kiếm/lọc tin
+    \item Grid hiển thị danh sách bài đăng (card design)
+    \item Hiển thị trạng thái online của tác giả
+    \item Responsive design cho mobile
+\end{itemize}
+
+\subsection{login.php - Đăng nhập}
+
+\textbf{Backend:}
+\begin{itemize}
+    \item Xác thực email/password với password\_verify()
+    \item Kiểm tra email đã xác thực chưa
+    \item Tạo session với thông tin user
+    \item Cập nhật last\_login
+    \item Redirect theo vai trò
+\end{itemize}
+
+\textbf{Frontend:}
+\begin{itemize}
+    \item Form đăng nhập với validation
+    \item Link đăng nhập Facebook
+    \item Link quên mật khẩu
+    \item Link đăng ký
+\end{itemize}
+
+\subsection{register.php - Đăng ký}
+
+\textbf{Backend:}
+\begin{itemize}
+    \item Validate dữ liệu đầu vào
+    \item Kiểm tra email trùng lặp
+    \item Hash password với password\_hash()
+    \item Tự động phân quyền: email .edu.vn = student, còn lại = patient
+    \item Gửi email xác thực
+    \item Tạo bản ghi trong bảng users
+\end{itemize}
+
+\subsection{chat.php - Hệ thống chat}
+
+\textbf{Backend:}
+\begin{itemize}
+    \item Tạo/lấy conversation giữa 2 user
+    \item Lưu tin nhắn vào bảng direct\_messages
+    \item Truy vấn lịch sử tin nhắn
+\end{itemize}
+
+\textbf{Frontend:}
+\begin{itemize}
+    \item Giao diện chat 2 cột (danh sách + nội dung)
+    \item Hiển thị avatar và trạng thái online
+    \item Form gửi tin nhắn
+    \item Auto-scroll đến tin mới nhất
+\end{itemize}
+
+\subsection{admin\_dashboard.php - Bảng điều khiển Admin}
+
+\textbf{Backend:}
+\begin{itemize}
+    \item Thống kê: tổng users, posts, messages, reports
+    \item Đếm theo vai trò, trạng thái
+    \item Lấy danh sách pending verifications
+\end{itemize}
+
+\textbf{Frontend:}
+\begin{itemize}
+    \item Cards thống kê với icons
+    \item Bảng danh sách cần xử lý
+    \item Quick links đến các trang quản lý
+\end{itemize}
+
+% ============================================================
+\section{CÁC TÍNH NĂNG CHÍNH CỦA HỆ THỐNG}
+% ============================================================
+
+\subsection{Tính năng xác thực và phân quyền}
+
+\begin{enumerate}
+    \item \textbf{Đăng ký/Đăng nhập:}
+    \begin{itemize}
+        \item Đăng ký bằng email thường hoặc email sinh viên
+        \item Đăng nhập bằng Facebook OAuth
+        \item Xác thực email qua token
+        \item Quên mật khẩu/Reset password
+    \end{itemize}
+    
+    \item \textbf{Phân quyền 3 cấp:}
+    \begin{itemize}
+        \item \textbf{Patient (Bệnh nhân):} Đăng tin tuyển dụng, tìm sinh viên
+        \item \textbf{Student (Sinh viên):} Đăng tin ứng tuyển (sau khi xác thực)
+        \item \textbf{Admin:} Quản lý toàn bộ hệ thống
+    \end{itemize}
+    
+    \item \textbf{Xác thực sinh viên:}
+    \begin{itemize}
+        \item Upload ảnh thẻ sinh viên
+        \item Admin duyệt/từ chối
+        \item Cấp quyền đăng tin sau khi xác thực
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Tính năng quản lý bài đăng}
+
+\begin{enumerate}
+    \item \textbf{Tạo bài đăng:}
+    \begin{itemize}
+        \item Tin tuyển dụng (recruitment) - cho bệnh nhân
+        \item Tin ứng tuyển (application) - cho sinh viên
+        \item Nhập: tiêu đề, nội dung, danh mục, khu vực, giá đề xuất, thông tin liên hệ
+    \end{itemize}
+    
+    \item \textbf{Quản lý trạng thái:}
+    \begin{itemize}
+        \item Open: Đang mở
+        \item Taken: Đã có người nhận
+        \item Closed: Đã đóng
+    \end{itemize}
+    
+    \item \textbf{Tìm kiếm và lọc:}
+    \begin{itemize}
+        \item Tìm theo từ khóa
+        \item Lọc theo loại tin
+        \item Lọc theo khu vực
+        \item Lọc theo danh mục/chuyên khoa
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Tính năng giao tiếp}
+
+\begin{enumerate}
+    \item \textbf{Hệ thống tin nhắn:}
+    \begin{itemize}
+        \item Chat trực tiếp giữa 2 người dùng
+        \item Tin nhắn liên quan đến bài đăng
+        \item Lưu trữ lịch sử hội thoại
+    \end{itemize}
+    
+    \item \textbf{Hệ thống bạn bè:}
+    \begin{itemize}
+        \item Gửi lời mời kết bạn
+        \item Chấp nhận/Từ chối lời mời
+        \item Danh sách bạn bè
+    \end{itemize}
+    
+    \item \textbf{Bình luận:}
+    \begin{itemize}
+        \item Bình luận trên bài đăng
+        \item Trả lời bình luận (nested comments)
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Tính năng đánh giá và báo cáo}
+
+\begin{enumerate}
+    \item \textbf{Đánh giá người dùng:}
+    \begin{itemize}
+        \item Đánh giá 1-5 sao
+        \item Viết nhận xét
+        \item Hiển thị điểm trung bình
+    \end{itemize}
+    
+    \item \textbf{Báo cáo vi phạm:}
+    \begin{itemize}
+        \item Báo cáo bài đăng
+        \item Báo cáo bình luận
+        \item Chọn lý do vi phạm
+        \item Admin xử lý báo cáo
+    \end{itemize}
+\end{enumerate}
+
+\subsection{Tính năng yêu thích}
+
+\begin{itemize}
+    \item Lưu bài đăng vào danh sách yêu thích
+    \item Xem danh sách bài đăng đã lưu
+    \item Xóa khỏi danh sách yêu thích
+\end{itemize}
+
+\subsection{Tính năng quản trị (Admin)}
+
+\begin{enumerate}
+    \item \textbf{Dashboard:} Thống kê tổng quan hệ thống
+    \item \textbf{Quản lý người dùng:} Xem, khóa, xóa, cấp quyền
+    \item \textbf{Quản lý bài đăng:} Duyệt, ẩn, xóa, tạo mới
+    \item \textbf{Xử lý xác thực:} Duyệt/từ chối yêu cầu xác thực sinh viên
+    \item \textbf{Xử lý báo cáo:} Xem và xử lý các báo cáo vi phạm
+    \item \textbf{Gửi thông báo:} Gửi thông báo đến người dùng
+\end{enumerate}
+
+\subsection{Tính năng bảo mật}
+
+\begin{enumerate}
+    \item \textbf{Password hashing:} Sử dụng password\_hash() với bcrypt
+    \item \textbf{SQL Injection prevention:} Sử dụng PDO prepared statements
+    \item \textbf{XSS prevention:} htmlspecialchars() cho output
+    \item \textbf{CSRF protection:} Session-based authentication
+    \item \textbf{Email verification:} Token-based email confirmation
+    \item \textbf{Session management:} Secure session handling
+\end{enumerate}
+
+\subsection{Tính năng UX/UI}
+
+\begin{enumerate}
+    \item \textbf{Responsive design:} Tương thích mobile, tablet, desktop
+    \item \textbf{Online status:} Hiển thị trạng thái online/offline
+    \item \textbf{Avatar:} Upload và hiển thị ảnh đại diện
+    \item \textbf{Notifications:} Thông báo hệ thống
+    \item \textbf{Search \& Filter:} Tìm kiếm và lọc nâng cao
+    \item \textbf{Pagination:} Phân trang danh sách
+\end{enumerate}
+
+% ============================================================
+\section{SƠ ĐỒ LUỒNG DỮ LIỆU}
+% ============================================================
+
+\subsection{Luồng đăng ký tài khoản}
+
+\begin{verbatim}
+User -> register.php -> Validate input
+                     -> Check email exists
+                     -> Hash password
+                     -> Determine role (patient/student)
+                     -> Insert to users table
+                     -> Send verification email
+                     -> Redirect to login
+\end{verbatim}
+
+\subsection{Luồng đăng tin}
+
+\begin{verbatim}
+User -> create_recruitment.php / create_application.php
+     -> Check login & permission
+     -> Validate input
+     -> Insert to posts table
+     -> Redirect to view_post.php
+\end{verbatim}
+
+\subsection{Luồng xác thực sinh viên}
+
+\begin{verbatim}
+Student -> request_verification.php
+        -> Upload student card image
+        -> Insert to verifications table (status=pending)
+
+Admin -> admin_verifications.php
+      -> Review request
+      -> Approve/Reject
+      -> Update users.verified = 1 (if approved)
+      -> Student can now post
+\end{verbatim}
+
+% ============================================================
+\section{CẤU TRÚC DATABASE}
+% ============================================================
+
+\subsection{Các bảng chính}
+
+\begin{enumerate}
+    \item \textbf{users:} Thông tin người dùng
+    \item \textbf{posts:} Bài đăng (tuyển dụng/ứng tuyển)
+    \item \textbf{messages:} Tin nhắn liên quan bài đăng
+    \item \textbf{conversations:} Cuộc hội thoại
+    \item \textbf{direct\_messages:} Tin nhắn trực tiếp
+    \item \textbf{favorites:} Bài đăng yêu thích
+    \item \textbf{ratings:} Đánh giá người dùng
+    \item \textbf{comments:} Bình luận
+    \item \textbf{reports:} Báo cáo vi phạm
+    \item \textbf{verifications:} Yêu cầu xác thực sinh viên
+    \item \textbf{posting\_requests:} Yêu cầu cấp quyền đăng tin
+    \item \textbf{friendships:} Quan hệ bạn bè
+    \item \textbf{email\_verifications:} Token xác thực email
+    \item \textbf{password\_resets:} Token reset mật khẩu
+    \item \textbf{account\_requests:} Yêu cầu hỗ trợ tài khoản
+\end{enumerate}
+
+% ============================================================
+\section{KẾT LUẬN}
+% ============================================================
+
+Dự án "Website Kết Nối Y Tế" được xây dựng với kiến trúc PHP thuần, kết hợp Frontend và Backend trong cùng các file PHP. Hệ thống cung cấp đầy đủ các tính năng cần thiết cho một nền tảng kết nối:
+
+\begin{itemize}
+    \item Hệ thống xác thực và phân quyền 3 cấp
+    \item Quản lý bài đăng với tìm kiếm/lọc nâng cao
+    \item Hệ thống tin nhắn và chat trực tiếp
+    \item Tính năng xã hội: bạn bè, đánh giá, bình luận
+    \item Trang quản trị đầy đủ chức năng
+    \item Bảo mật cơ bản với các best practices
+    \item Giao diện responsive, thân thiện người dùng
+\end{itemize}
+
+\end{document}

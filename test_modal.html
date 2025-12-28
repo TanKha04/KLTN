@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Modal</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <style>
+        body { padding: 2rem; background: #f1f5f9; }
+        #applicantsModal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            overflow-y: auto;
+        }
+        #applicantsModal .modal-dialog {
+            max-width: 700px;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <h2>Test Modal Người Quan Tâm</h2>
+    <button class="btn btn-success" onclick="showApplicants(1, 'Test Tin')">
+        <i class="bi bi-person-check-fill"></i> Nhận
+    </button>
+
+    <!-- Modal -->
+    <div class="modal" id="applicantsModal" tabindex="-1" style="display:none;">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content" style="border-radius: 20px; border: none; overflow: hidden; box-shadow: 0 25px 50px rgba(0,0,0,0.25);">
+                <div class="modal-header" style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; padding: 1.25rem 1.5rem;">
+                    <h5 class="modal-title text-white">
+                        <i class="bi bi-people-fill me-2"></i>
+                        <span id="applicantsModalTitle">Người quan tâm</span>
+                    </h5>
+                    <button type="button" class="btn-close btn-close-white" onclick="closeApplicantsModal()"></button>
+                </div>
+                <div class="modal-body" id="applicantsModalBody" style="padding: 1.5rem; max-height: 60vh; overflow-y: auto; background: #fff;">
+                    <div class="text-center p-4">
+                        <div class="spinner-border text-success"></div>
+                        <p class="mt-2">Đang tải...</p>
+                    </div>
+                </div>
+                <div class="modal-footer" style="border-top: 1px solid #e2e8f0; padding: 1rem 1.5rem; background: #fff;">
+                    <button type="button" class="btn btn-secondary" onclick="closeApplicantsModal()">Đóng</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    function showApplicants(postId, postTitle) {
+        console.log('showApplicants called:', postId, postTitle);
+        
+        var modal = document.getElementById('applicantsModal');
+        if (!modal) {
+            alert('Không tìm thấy modal!');
+            return;
+        }
+        
+        console.log('Modal found, showing...');
+        
+        var titleEl = document.getElementById('applicantsModalTitle');
+        if (titleEl) titleEl.textContent = 'Người quan tâm: ' + postTitle;
+        
+        var bodyEl = document.getElementById('applicantsModalBody');
+        if (bodyEl) bodyEl.innerHTML = '<div class="text-center p-4"><div class="spinner-border text-success"></div><p class="mt-2">Đang tải...</p></div>';
+        
+        // Show modal
+        modal.style.display = 'flex';
+        modal.style.alignItems = 'center';
+        modal.style.justifyContent = 'center';
+        modal.style.backgroundColor = 'rgba(0,0,0,0.5)';
+        document.body.style.overflow = 'hidden';
+        
+        // Simulate loading
+        setTimeout(function() {
+            bodyEl.innerHTML = '<div class="text-center p-4">' +
+                '<i class="bi bi-people" style="font-size:3rem;color:#94a3b8;"></i>' +
+                '<h6 class="text-muted mt-3">Không có</h6>' +
+                '<p class="text-muted small">Chưa có ai liên hệ với bạn về tin này.</p>' +
+            '</div>';
+        }, 1000);
+    }
+
+    function closeApplicantsModal() {
+        var modal = document.getElementById('applicantsModal');
+        if (modal) {
+            modal.style.display = 'none';
+            modal.style.backgroundColor = '';
+        }
+        document.body.style.overflow = '';
+    }
+    </script>
+</body>
+</html>

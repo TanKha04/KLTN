@@ -1,0 +1,60 @@
+HƯỚNG DẪN ĐỔI TÊN FILE ẢNH TRÊN OVERLEAF
+==========================================
+
+Bạn cần đổi tên các file ảnh trên Overleaf như sau:
+
+1. ảnh cài đặt trang bệnh nhân.png -> caidat_benhnhan.png
+2. ảnh gửi lời mời kết bạn.png -> gui_loimoi_ketban.png
+3. ảnh hiển thị đã gửi lời mời .png -> hienthi_da_gui_loimoi.png
+4. ảnh hồ sơ cá nhân trang bệnh nhân.png -> hoso_benhnhan.png
+5. ảnh hỗ trợ trang bệnh nhân.png -> hotro_benhnhan.png
+6. ảnh hội thoại.png -> hoithoai.png
+7. ảnh lịch sử nhận việc trang bệnh nhân.png -> lichsu_nhanviec_benhnhan.png
+8. ảnh menu tài khoản trang bệnh nhân.png -> menu_taikhoan_benhnhan.png
+9. ảnh phần đánh giá trang bệnh nhân.png -> danhgia_benhnhan.png
+10. ảnh tạo tin ứng tuyển.png -> taotin_ungtuyen.png
+11. ảnh thống kê lượt liên hệ trang bệnh nhân.png -> thongke_lienhe_benhnhan.png
+12. ảnh tin của tôi trang bệnh nhân.png -> tin_cuatoi_benhnhan.png
+13. ảnh tin nhắn bạn bè.png -> tinnhan_banbe.png
+14. Ảnh tin nhắn.png -> tinnhan.png
+15. giao diện bảng điều khiển trang bệnh nhân và sinh viên vẫn có thể xem tin .png -> dashboard_benhnhan.png
+16. Giao diện bảng điều khiển trang sinh viên.png -> dashboard_sinhvien.png
+17. giao diện cài đặt trang sinh viên.png -> caidat_sinhvien.png
+18. giao diện đánh giá trang sinh viên.png -> danhgia_sinhvien.png
+19. giao diện gửi thông báo trang quản trị.png -> gui_thongbao_quantri.png
+20. giao diện hồ sơ cá nhân trang sinh viên.png -> hoso_sinhvien.png
+21. giao diện hồ sơ trang quản trị.png -> hoso_quantri.png
+22. giao diện hỗ trợ trang sinh viên.png -> hotro_sinhvien.png
+23. Giao diện khi có người gửi lời mời kết bạn.png -> nhan_loimoi_ketban.png
+24. Giao diện khi yêu cầu hỗ trợ thành công.png -> yeucau_hotro_thanhcong.png
+25. Giao diện kiểm duyệt bình luận trang quản trị.png -> kiemduyet_binhluan.png
+26. giao diện kiểm duyệt đánh giá.png -> kiemduyet_danhgia.png
+27. giao diện kiểm duyệt xác minh.png -> kiemduyet_xacminh.png
+28. giao diện lịch sử nhận việc trang sinh viên.png -> lichsu_nhanviec_sinhvien.png
+29. giao diện lịch sử xét duyệt trang quản trị.png -> lichsu_xetduyet_quantri.png
+30. Giao diện quản lí người dùng.png -> quanly_nguoidung.png
+31. giao diện quản lý yêu cầu người dùng.png -> quanly_yeucau_nguoidung.png
+32. Giao diện Quản lí yêu thích trang quản trị.png -> quanly_yeuthich_quantri.png
+33. Giao diện tạo tin tuyển dụng.png -> taotin_tuyendung.png
+34. Giao diện thông báo khi đã xin xác thực thành công.png -> thongbao_xacthuc_thanhcong.png
+35. giao diện thống kê lượt liên hệ trang sinh viên.png -> thongke_lienhe_sinhvien.png
+36. giao diện tin của tôi trang sinh viên.png -> tin_cuatoi_sinhvien.png
+37. Giao diện trang bảng điều khiển quản trị.png -> dashboard_quantri.png
+38. giao diện xác minh tài khoản trang sinh viên .png -> xacminh_taikhoan_sinhvien.png
+39. giao diện xem bài viết của trang quản trị.png -> xem_baiviet_quantri.png
+40. giao diện xem người dùng trang quản trị.png -> xem_nguoidung_quantri.png
+41. Giao diện xin xác minh để đăng.png -> xin_xacminh_dedang.png
+42. Giao diện xin xác thực tài khoản .png -> xin_xacthuc_taikhoan.png
+43. giao diện xử lý khiếu nại trang quản trị.png -> xuly_khieunai_quantri.png
+44. giao diện yêu cầu xác thực trang quản trị.png -> yeucau_xacthuc_quantri.png
+45. Giao diện yêu thích trang sinh viên y.png -> yeuthich_sinhvien.png
+46. logo web.jpg -> logo.jpg (hoặc logo.png)
+47. quản lí bài viết của trang quản trị .png -> quanly_baiviet_quantri.png
+48. quản lí tin tuyển dụng trang bệnh nhân.png -> quanly_tintuyendung_benhnhan.png
+49. Thông báo từ hệ thống.png -> thongbao_hethong.png
+50. Thông báo xác minh.png -> thongbao_xacminh.png
+51. Thông báo yêu cầu từ người dùng.png -> thongbao_yeucau_nguoidung.png
+52. Thông báo yêu cầu xác thực.png -> thongbao_yeucau_xacthuc.png
+53. Yêu Thích trang sinh viên.png -> yeuthich_sinhvien2.png
+54. usecase.jpg -> usecase.jpg (giữ nguyên)
+55. ERD.png -> ERD.png (giữ nguyên)

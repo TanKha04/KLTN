@@ -1,0 +1,932 @@
+\documentclass[12pt,a4paper]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{geometry}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{array}
+\usepackage{booktabs}
+\usepackage{enumitem}
+\usepackage{indentfirst}
+
+\geometry{left=3cm,right=2cm,top=2cm,bottom=2cm}
+
+\titleformat{\chapter}[display]
+{\normalfont\Large\bfseries\centering}
+{\MakeUppercase{\chaptertitlename}\ \thechapter}{0pt}{\Large\MakeUppercase}
+
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{1em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\thepage}
+\renewcommand{\headrulewidth}{0pt}
+
+\begin{document}
+
+\begin{titlepage}
+\centering
+\textbf{BỘ GIÁO DỤC VÀ ĐÀO TẠO}\\
+\textbf{TRƯỜNG ĐẠI HỌC ...}\\[0.5cm]
+\textbf{KHOA CÔNG NGHỆ THÔNG TIN}\\[2cm]
+
+\includegraphics[width=3cm]{logo_web.jpg}\\[1cm]
+
+\textbf{\Large ĐỒ ÁN CHUYÊN NGÀNH}\\[1cm]
+
+\textbf{\LARGE WEB PHÁT TRIỂN ỨNG DỤNG KẾT NỐI SINH VIÊN NGÀNH Y VỚI NGƯỜI CÓ NHU CẦU CHĂM SÓC SỨC KHỎE TẠI NHÀ}\\[3cm]
+
+\begin{flushleft}
+\hspace{5cm}\textbf{Giảng viên hướng dẫn:} [Tên GVHD]\\[0.3cm]
+\hspace{5cm}\textbf{Sinh viên thực hiện:} [Tên sinh viên]\\[0.3cm]
+\hspace{5cm}\textbf{Mã số sinh viên:} [MSSV]\\[0.3cm]
+\hspace{5cm}\textbf{Lớp:} [Tên lớp]\\[0.3cm]
+\end{flushleft}
+
+\vfill
+\textbf{TP. Hồ Chí Minh, năm 2024}
+\end{titlepage}
+
+\chapter*{LỜI CẢM ƠN}
+\addcontentsline{toc}{chapter}{LỜI CẢM ƠN}
+
+Lời đầu tiên, em xin gửi lời cảm ơn chân thành và sâu sắc nhất đến thầy/cô [Tên GVHD] - người đã trực tiếp hướng dẫn, chỉ bảo tận tình và đóng góp nhiều ý kiến quý báu trong suốt quá trình em thực hiện đồ án này.
+
+Em cũng xin gửi lời cảm ơn đến quý thầy cô trong Khoa Công nghệ Thông tin đã truyền đạt những kiến thức nền tảng quan trọng, giúp em có đủ kiến thức và kỹ năng để hoàn thành đồ án.
+
+Cuối cùng, em xin cảm ơn gia đình và bạn bè đã luôn động viên, hỗ trợ em trong suốt quá trình học tập và thực hiện đồ án.
+
+Mặc dù đã cố gắng hoàn thiện đồ án trong phạm vi và khả năng cho phép, nhưng chắc chắn không tránh khỏi những thiếu sót. Em rất mong nhận được sự góp ý của quý thầy cô để đồ án được hoàn thiện hơn.
+
+Em xin chân thành cảm ơn!
+
+\vspace{1cm}
+\begin{flushright}
+\textit{TP. Hồ Chí Minh, ngày ... tháng ... năm 2024}\\
+\textbf{Sinh viên thực hiện}\\[1cm]
+[Tên sinh viên]
+\end{flushright}
+
+\tableofcontents
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{chapter}{DANH MỤC HÌNH ẢNH}
+\newpage
+
+\listoftables
+\addcontentsline{toc}{chapter}{DANH MỤC BẢNG BIỂU}
+\newpage
+
+\chapter*{TÓM TẮT ĐỒ ÁN CHUYÊN NGÀNH}
+\addcontentsline{toc}{chapter}{TÓM TẮT ĐỒ ÁN CHUYÊN NGÀNH}
+
+Đồ án "Web phát triển ứng dụng kết nối sinh viên ngành Y với người có nhu cầu chăm sóc sức khỏe tại nhà" được thực hiện nhằm giải quyết vấn đề kết nối giữa sinh viên ngành Y đang trong quá trình thực tập, học hỏi kinh nghiệm với những người có nhu cầu được chăm sóc sức khỏe tại nhà.
+
+\textbf{Vấn đề nghiên cứu:} Hiện nay, nhu cầu chăm sóc sức khỏe tại nhà ngày càng tăng cao, đặc biệt đối với người cao tuổi, người bệnh mãn tính. Trong khi đó, sinh viên ngành Y cần có cơ hội thực hành, tích lũy kinh nghiệm thực tế. Tuy nhiên, việc kết nối giữa hai đối tượng này còn gặp nhiều khó khăn do thiếu một nền tảng trung gian đáng tin cậy.
+
+\textbf{Hướng tiếp cận:} Xây dựng một ứng dụng web sử dụng công nghệ PHP, MySQL với giao diện thân thiện, cho phép:
+\begin{itemize}
+    \item Người có nhu cầu (bệnh nhân) đăng tin tuyển dụng người chăm sóc
+    \item Sinh viên Y đăng tin ứng tuyển, giới thiệu bản thân
+    \item Hệ thống xác minh danh tính sinh viên thông qua thẻ sinh viên
+    \item Tích hợp tính năng nhắn tin, đánh giá và quản lý
+\end{itemize}
+
+\textbf{Kết quả đạt được:}
+\begin{itemize}
+    \item Hoàn thành website với đầy đủ chức năng đăng ký, đăng nhập, quản lý tin đăng
+    \item Xây dựng hệ thống xác minh sinh viên Y
+    \item Tích hợp tính năng nhắn tin trực tiếp, kết bạn
+    \item Hệ thống đánh giá và báo cáo vi phạm
+    \item Giao diện quản trị viên hoàn chỉnh
+\end{itemize}
+
+\newpage
+
+\chapter*{MỞ ĐẦU}
+\addcontentsline{toc}{chapter}{MỞ ĐẦU}
+
+\section*{1. Lý do chọn đề tài}
+
+Trong bối cảnh xã hội hiện đại, nhu cầu chăm sóc sức khỏe tại nhà ngày càng trở nên phổ biến và cấp thiết. Đặc biệt với dân số già hóa, nhiều gia đình có người thân cần được chăm sóc y tế cơ bản nhưng không có điều kiện đưa đến bệnh viện thường xuyên hoặc thuê điều dưỡng chuyên nghiệp với chi phí cao.
+
+Mặt khác, sinh viên ngành Y trong quá trình học tập luôn cần cơ hội thực hành, tích lũy kinh nghiệm thực tế để nâng cao tay nghề. Việc tham gia chăm sóc sức khỏe tại nhà không chỉ giúp sinh viên có thêm thu nhập mà còn là cơ hội quý báu để áp dụng kiến thức đã học vào thực tiễn.
+
+Tuy nhiên, hiện tại chưa có nhiều nền tảng kết nối hiệu quả giữa hai đối tượng này. Xuất phát từ thực tế đó, em đã chọn đề tài "Web phát triển ứng dụng kết nối sinh viên ngành Y với người có nhu cầu chăm sóc sức khỏe tại nhà".
+
+\section*{2. Mục đích nghiên cứu}
+
+\begin{itemize}
+    \item Xây dựng ứng dụng web kết nối sinh viên ngành Y với người có nhu cầu chăm sóc sức khỏe tại nhà
+    \item Tạo môi trường an toàn, đáng tin cậy cho cả hai bên thông qua hệ thống xác minh danh tính
+    \item Cung cấp các công cụ giao tiếp, đánh giá và quản lý hiệu quả
+\end{itemize}
+
+\section*{3. Đối tượng nghiên cứu}
+
+\begin{itemize}
+    \item \textbf{Sinh viên ngành Y:} Sinh viên đang theo học các ngành liên quan đến y tế, điều dưỡng
+    \item \textbf{Người có nhu cầu chăm sóc sức khỏe:} Bệnh nhân, người cao tuổi, người cần hỗ trợ y tế cơ bản tại nhà
+    \item \textbf{Quản trị viên hệ thống:} Người quản lý, kiểm duyệt nội dung và xác minh người dùng
+\end{itemize}
+
+\section*{4. Phạm vi nghiên cứu}
+
+\begin{itemize}
+    \item \textbf{Phạm vi nội dung:} Xây dựng ứng dụng web với các chức năng: đăng ký, đăng nhập, đăng tin, tìm kiếm, nhắn tin, đánh giá và quản trị
+    \item \textbf{Phạm vi công nghệ:} Sử dụng PHP, MySQL, HTML/CSS/JavaScript, Bootstrap
+\end{itemize}
+
+\newpage
+
+\chapter{TỔNG QUAN}
+
+\section{Giới thiệu bài toán}
+
+Trong những năm gần đây, nhu cầu chăm sóc sức khỏe tại nhà tại Việt Nam ngày càng tăng cao do nhiều yếu tố:
+
+\begin{itemize}
+    \item Dân số già hóa nhanh chóng, số lượng người cao tuổi cần được chăm sóc ngày càng nhiều
+    \item Chi phí nằm viện cao, nhiều gia đình lựa chọn chăm sóc người thân tại nhà
+    \item Các bệnh mãn tính như tiểu đường, huyết áp cao cần theo dõi và chăm sóc thường xuyên
+    \item Nhu cầu phục hồi chức năng sau phẫu thuật hoặc tai nạn
+\end{itemize}
+
+Đồng thời, sinh viên ngành Y tại Việt Nam đang đối mặt với nhiều thách thức:
+
+\begin{itemize}
+    \item Cần nhiều thời gian thực hành để nâng cao tay nghề
+    \item Chi phí học tập cao, cần có nguồn thu nhập hỗ trợ
+    \item Cơ hội thực tập tại bệnh viện có hạn
+    \item Thiếu kênh kết nối với người có nhu cầu chăm sóc sức khỏe
+\end{itemize}
+
+Bài toán đặt ra là làm thế nào để kết nối hiệu quả giữa hai đối tượng này, đảm bảo tính xác thực của sinh viên Y, sự an toàn cho cả hai bên, giao tiếp thuận tiện và có cơ chế đánh giá phản hồi.
+
+\section{Tình hình nghiên cứu trong và ngoài nước}
+
+\subsection{Tình hình trong nước}
+
+Tại Việt Nam, một số ứng dụng và dịch vụ liên quan đến chăm sóc sức khỏe tại nhà đã xuất hiện:
+
+\begin{itemize}
+    \item \textbf{Các ứng dụng đặt lịch khám bệnh:} Như Docosan, BookingCare cho phép đặt lịch khám tại bệnh viện nhưng chưa tập trung vào chăm sóc tại nhà
+    \item \textbf{Dịch vụ điều dưỡng tại nhà:} Một số công ty cung cấp dịch vụ điều dưỡng chuyên nghiệp nhưng chi phí cao
+    \item \textbf{Các nhóm Facebook, Zalo:} Kết nối không chính thức, thiếu xác minh và đảm bảo
+\end{itemize}
+
+\subsection{Tình hình ngoài nước}
+
+Trên thế giới, nhiều nền tảng tương tự đã được phát triển:
+
+\begin{itemize}
+    \item \textbf{Care.com (Mỹ):} Nền tảng kết nối người chăm sóc với gia đình có nhu cầu
+    \item \textbf{Honor (Mỹ):} Dịch vụ chăm sóc người cao tuổi tại nhà
+    \item \textbf{Homage (Singapore):} Ứng dụng kết nối điều dưỡng với người cần chăm sóc
+\end{itemize}
+
+\section{Mục tiêu và phạm vi đề tài}
+
+\subsection{Mục tiêu}
+
+\begin{itemize}
+    \item Xây dựng website hoàn chỉnh với giao diện thân thiện, dễ sử dụng
+    \item Phát triển hệ thống xác minh sinh viên Y đảm bảo độ tin cậy
+    \item Tích hợp các tính năng giao tiếp: nhắn tin, kết bạn
+    \item Xây dựng hệ thống đánh giá và báo cáo vi phạm
+    \item Phát triển trang quản trị viên với đầy đủ chức năng
+\end{itemize}
+
+\subsection{Phạm vi}
+
+\begin{itemize}
+    \item Ứng dụng web responsive, tương thích đa thiết bị
+    \item Hỗ trợ hai loại người dùng: sinh viên Y và bệnh nhân
+    \item Quản trị viên có quyền kiểm duyệt và quản lý toàn bộ hệ thống
+\end{itemize}
+
+\newpage
+
+\chapter{NGHIÊN CỨU LÝ THUYẾT}
+
+\section{Cơ sở lý thuyết về phát triển web}
+
+\subsection{Kiến trúc Client-Server}
+
+Ứng dụng web hoạt động theo mô hình Client-Server, trong đó:
+
+\begin{itemize}
+    \item \textbf{Client (Máy khách):} Trình duyệt web của người dùng, gửi yêu cầu và hiển thị kết quả
+    \item \textbf{Server (Máy chủ):} Xử lý yêu cầu, truy vấn cơ sở dữ liệu và trả về kết quả
+\end{itemize}
+
+Quy trình hoạt động:
+\begin{enumerate}
+    \item Người dùng gửi yêu cầu từ trình duyệt (HTTP Request)
+    \item Server nhận và xử lý yêu cầu
+    \item Server truy vấn cơ sở dữ liệu nếu cần
+    \item Server trả về kết quả (HTTP Response)
+    \item Trình duyệt hiển thị kết quả cho người dùng
+\end{enumerate}
+
+\subsection{Mô hình MVC (Model-View-Controller)}
+
+Mô hình MVC là một pattern phổ biến trong phát triển web, chia ứng dụng thành 3 thành phần:
+
+\begin{itemize}
+    \item \textbf{Model:} Quản lý dữ liệu và logic nghiệp vụ
+    \item \textbf{View:} Hiển thị giao diện người dùng
+    \item \textbf{Controller:} Điều khiển luồng xử lý, kết nối Model và View
+\end{itemize}
+
+\section{Công nghệ sử dụng}
+
+\subsection{PHP (Hypertext Preprocessor)}
+
+PHP là ngôn ngữ lập trình kịch bản phía server, được sử dụng rộng rãi trong phát triển web.
+
+\textbf{Đặc điểm:}
+\begin{itemize}
+    \item Mã nguồn mở, miễn phí
+    \item Dễ học, dễ sử dụng
+    \item Hỗ trợ nhiều hệ quản trị cơ sở dữ liệu
+    \item Cộng đồng lớn, nhiều tài liệu hỗ trợ
+    \item Tích hợp tốt với HTML
+\end{itemize}
+
+\subsection{MySQL}
+
+MySQL là hệ quản trị cơ sở dữ liệu quan hệ (RDBMS) phổ biến nhất thế giới.
+
+\textbf{Đặc điểm:}
+\begin{itemize}
+    \item Mã nguồn mở, miễn phí
+    \item Hiệu suất cao, ổn định
+    \item Hỗ trợ nhiều tính năng: transaction, stored procedure, trigger
+    \item Bảo mật tốt
+    \item Dễ dàng sao lưu và phục hồi
+\end{itemize}
+
+\subsection{HTML5 và CSS3}
+
+\textbf{HTML5:}
+\begin{itemize}
+    \item Ngôn ngữ đánh dấu chuẩn cho web
+    \item Hỗ trợ các thẻ semantic: header, footer, nav, article
+    \item Tích hợp multimedia: audio, video
+    \item Hỗ trợ form validation
+\end{itemize}
+
+\textbf{CSS3:}
+\begin{itemize}
+    \item Định dạng giao diện web
+    \item Hỗ trợ responsive design với media queries
+    \item Animation và transition
+    \item Flexbox và Grid layout
+\end{itemize}
+
+\subsection{JavaScript}
+
+JavaScript là ngôn ngữ lập trình phía client, giúp tạo tương tác động cho website.
+
+\textbf{Ứng dụng trong đồ án:}
+\begin{itemize}
+    \item Xử lý sự kiện người dùng
+    \item Validation form phía client
+    \item AJAX để tải dữ liệu không cần refresh trang
+    \item Hiệu ứng giao diện
+\end{itemize}
+
+\subsection{Bootstrap 5}
+
+Bootstrap là framework CSS phổ biến nhất, giúp xây dựng giao diện responsive nhanh chóng.
+
+\textbf{Đặc điểm:}
+\begin{itemize}
+    \item Hệ thống grid 12 cột linh hoạt
+    \item Các component có sẵn: button, card, modal, navbar
+    \item Responsive design tự động
+    \item Tùy biến dễ dàng
+\end{itemize}
+
+\section{Môi trường phát triển}
+
+\subsection{XAMPP}
+
+XAMPP là gói phần mềm tích hợp bao gồm:
+\begin{itemize}
+    \item Apache Web Server
+    \item MySQL Database
+    \item PHP
+    \item phpMyAdmin (quản lý MySQL qua web)
+\end{itemize}
+
+\textbf{Ưu điểm:}
+\begin{itemize}
+    \item Cài đặt đơn giản, một lần cho tất cả
+    \item Phù hợp cho môi trường phát triển
+    \item Hỗ trợ đa nền tảng: Windows, Linux, macOS
+\end{itemize}
+
+\subsection{Visual Studio Code}
+
+Visual Studio Code là trình soạn thảo mã nguồn miễn phí của Microsoft.
+
+\textbf{Tính năng:}
+\begin{itemize}
+    \item IntelliSense: gợi ý code thông minh
+    \item Debugging tích hợp
+    \item Git integration
+    \item Extensions phong phú
+\end{itemize}
+
+\section{Phương pháp nghiên cứu}
+
+\subsection{Phương pháp phân tích và thiết kế hệ thống}
+
+\begin{itemize}
+    \item Phân tích yêu cầu người dùng
+    \item Thiết kế Use Case Diagram
+    \item Thiết kế ERD (Entity Relationship Diagram)
+    \item Thiết kế giao diện người dùng
+\end{itemize}
+
+\subsection{Phương pháp phát triển phần mềm}
+
+Áp dụng phương pháp phát triển Agile với các đặc điểm:
+\begin{itemize}
+    \item Phát triển theo từng sprint ngắn
+    \item Linh hoạt thay đổi yêu cầu
+    \item Kiểm thử liên tục
+    \item Phản hồi nhanh
+\end{itemize}
+
+\newpage
+
+\chapter{HIỆN THỰC HÓA NGHIÊN CỨU}
+
+\section{Phân tích yêu cầu hệ thống}
+
+\subsection{Yêu cầu chức năng}
+
+\subsubsection{Đối với Sinh viên Y}
+\begin{itemize}
+    \item Đăng ký tài khoản với email có đuôi edu.vn
+    \item Đăng nhập/Đăng xuất
+    \item Xác minh tài khoản sinh viên (upload thẻ sinh viên)
+    \item Xem danh sách tin tuyển dụng
+    \item Tạo tin ứng tuyển (sau khi được xác minh)
+    \item Quản lý tin đăng của mình
+    \item Nhắn tin với bệnh nhân
+    \item Kết bạn với người dùng khác
+    \item Đánh giá bệnh nhân sau khi hoàn thành công việc
+    \item Lưu tin yêu thích
+    \item Báo cáo vi phạm
+\end{itemize}
+
+\subsubsection{Đối với Bệnh nhân}
+\begin{itemize}
+    \item Đăng ký tài khoản
+    \item Đăng nhập/Đăng xuất
+    \item Tạo tin tuyển dụng người chăm sóc
+    \item Xem danh sách tin ứng tuyển của sinh viên
+    \item Quản lý tin đăng của mình
+    \item Nhắn tin với sinh viên
+    \item Kết bạn với người dùng khác
+    \item Đánh giá sinh viên sau khi sử dụng dịch vụ
+    \item Lưu tin yêu thích
+    \item Báo cáo vi phạm
+\end{itemize}
+
+\subsubsection{Đối với Quản trị viên}
+\begin{itemize}
+    \item Đăng nhập vào trang quản trị
+    \item Quản lý người dùng (xem, khóa, mở khóa)
+    \item Xét duyệt yêu cầu xác minh sinh viên
+    \item Kiểm duyệt bài viết
+    \item Kiểm duyệt bình luận
+    \item Xử lý báo cáo vi phạm
+    \item Gửi thông báo đến người dùng
+    \item Xem thống kê hệ thống
+    \item Quản lý yêu cầu từ người dùng
+\end{itemize}
+
+\subsection{Yêu cầu phi chức năng}
+
+\begin{itemize}
+    \item \textbf{Hiệu năng:} Trang web tải nhanh, phản hồi trong vòng 3 giây
+    \item \textbf{Bảo mật:} Mã hóa mật khẩu, chống SQL Injection, XSS
+    \item \textbf{Khả năng mở rộng:} Kiến trúc cho phép thêm tính năng mới
+    \item \textbf{Tính sẵn sàng:} Hoạt động 24/7
+    \item \textbf{Tương thích:} Hoạt động trên các trình duyệt phổ biến
+    \item \textbf{Responsive:} Hiển thị tốt trên mọi kích thước màn hình
+\end{itemize}
+
+\section{Thiết kế hệ thống}
+
+\subsection{Sơ đồ Use Case}
+
+Sơ đồ Use Case mô tả các chức năng chính của hệ thống và mối quan hệ với các tác nhân.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{usecase.jpg}
+    \caption{Sơ đồ Use Case tổng quan hệ thống}
+    \label{fig:usecase}
+\end{figure}
+
+\textbf{Mô tả các tác nhân:}
+\begin{itemize}
+    \item \textbf{Sinh viên Y:} Người dùng có email edu.vn, có thể đăng tin ứng tuyển sau khi xác minh
+    \item \textbf{Bệnh nhân:} Người dùng thông thường, có thể đăng tin tuyển dụng
+    \item \textbf{Quản trị viên:} Người quản lý hệ thống, có quyền cao nhất
+\end{itemize}
+
+\subsection{Thiết kế cơ sở dữ liệu}
+
+\subsubsection{Sơ đồ ERD (Entity Relationship Diagram)}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.95\textwidth]{ERD.png}
+    \caption{Sơ đồ ERD của hệ thống}
+    \label{fig:erd}
+\end{figure}
+
+\subsubsection{Mô tả các bảng dữ liệu}
+
+\begin{table}[H]
+\centering
+\caption{Bảng Users - Thông tin người dùng}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tên trường} & \textbf{Kiểu dữ liệu} & \textbf{Mô tả} \\
+\hline
+id & INT (PK) & Khóa chính, tự tăng \\
+name & VARCHAR(150) & Họ tên người dùng \\
+email & VARCHAR(255) & Email (unique) \\
+password & VARCHAR(255) & Mật khẩu đã mã hóa \\
+role & ENUM & Vai trò: patient/student \\
+bio & TEXT & Giới thiệu bản thân \\
+location & VARCHAR(255) & Địa chỉ \\
+phone & VARCHAR(50) & Số điện thoại \\
+verified & TINYINT & Trạng thái xác minh \\
+is\_admin & TINYINT & Quyền admin \\
+created\_at & TIMESTAMP & Ngày tạo tài khoản \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Bảng Posts - Tin đăng}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tên trường} & \textbf{Kiểu dữ liệu} & \textbf{Mô tả} \\
+\hline
+id & INT (PK) & Khóa chính \\
+user\_id & INT (FK) & ID người đăng \\
+title & VARCHAR(255) & Tiêu đề tin \\
+content & TEXT & Nội dung chi tiết \\
+type & ENUM & Loại: recruitment/application \\
+category & VARCHAR(100) & Danh mục \\
+area & VARCHAR(255) & Khu vực \\
+status & ENUM & Trạng thái: open/taken/closed \\
+created\_at & TIMESTAMP & Ngày đăng \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Bảng Messages - Tin nhắn}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tên trường} & \textbf{Kiểu dữ liệu} & \textbf{Mô tả} \\
+\hline
+id & INT (PK) & Khóa chính \\
+from\_user & INT (FK) & ID người gửi \\
+to\_user & INT (FK) & ID người nhận \\
+message & TEXT & Nội dung tin nhắn \\
+created\_at & TIMESTAMP & Thời gian gửi \\
+\hline
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Bảng Ratings - Đánh giá}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{Tên trường} & \textbf{Kiểu dữ liệu} & \textbf{Mô tả} \\
+\hline
+id & INT (PK) & Khóa chính \\
+rater\_id & INT (FK) & ID người đánh giá \\
+rated\_id & INT (FK) & ID người được đánh giá \\
+score & TINYINT & Điểm đánh giá (1-5) \\
+comment & TEXT & Nhận xét \\
+created\_at & TIMESTAMP & Thời gian đánh giá \\
+\hline
+\end{tabular}
+\end{table}
+
+\section{Cài đặt hệ thống}
+
+\subsection{Cấu trúc thư mục dự án}
+
+\begin{verbatim}
+DACN2/
+├── api/                    # API endpoints
+├── assets/                 # CSS, JS, images
+│   ├── css/
+│   └── js/
+├── uploads/                # File upload từ người dùng
+│   ├── student_cards/
+│   └── verification_docs/
+├── config.php              # Cấu hình database
+├── header.php              # Header chung
+├── footer.php              # Footer chung
+├── index.php               # Trang chủ
+├── login.php               # Đăng nhập
+├── register.php            # Đăng ký
+├── dashboard_student.php   # Trang sinh viên
+├── dashboard_patient.php   # Trang bệnh nhân
+├── admin_dashboard.php     # Trang quản trị
+└── ...
+\end{verbatim}
+
+\subsection{Bảo mật hệ thống}
+
+\subsubsection{Mã hóa mật khẩu}
+
+Sử dụng hàm \texttt{password\_hash()} của PHP với thuật toán bcrypt để mã hóa mật khẩu trước khi lưu vào database.
+
+\subsubsection{Chống SQL Injection}
+
+Sử dụng PDO với Prepared Statements để ngăn chặn SQL Injection:
+
+\begin{verbatim}
+$stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');
+$stmt->execute([$email]);
+\end{verbatim}
+
+\subsubsection{Xác thực phiên làm việc}
+
+\begin{itemize}
+    \item Sử dụng PHP Session để quản lý đăng nhập
+    \item Kiểm tra quyền truy cập trước mỗi thao tác
+    \item Tự động đăng xuất sau thời gian không hoạt động
+\end{itemize}
+
+\newpage
+
+\chapter{KẾT QUẢ NGHIÊN CỨU}
+
+\section{Giao diện người dùng}
+
+\subsection{Giao diện trang sinh viên Y}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_bang_dieu_khien_trang_sinh_vien.png}
+    \caption{Giao diện bảng điều khiển trang sinh viên}
+    \label{fig:dashboard_student}
+\end{figure}
+
+Trang bảng điều khiển sinh viên hiển thị:
+\begin{itemize}
+    \item Thông tin cá nhân và trạng thái xác minh
+    \item Danh sách tin tuyển dụng mới nhất
+    \item Menu điều hướng đến các chức năng
+    \item Thống kê hoạt động
+\end{itemize}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_ho_so_ca_nhan_trang_sinh_vien.png}
+    \caption{Giao diện hồ sơ cá nhân sinh viên}
+    \label{fig:profile_student}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_xin_xac_thuc_tai_khoan_.png}
+    \caption{Giao diện xin xác thực tài khoản sinh viên}
+    \label{fig:verify_student}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_yeu_thich_trang_sinh_vien_y.png}
+    \caption{Giao diện danh sách yêu thích của sinh viên}
+    \label{fig:favorites_student}
+\end{figure}
+
+\subsection{Giao diện trang bệnh nhân}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_bang_dieu_khien_trang_benh_nhan_va_sinh_vien_van_co_the_xem_tin_.png}
+    \caption{Giao diện bảng điều khiển trang bệnh nhân}
+    \label{fig:dashboard_patient}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{anh_ho_so_ca_nhan_trang_benh_nhan.png}
+    \caption{Giao diện hồ sơ cá nhân bệnh nhân}
+    \label{fig:profile_patient}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_tao_tin_tuyen_dung.png}
+    \caption{Giao diện tạo tin tuyển dụng}
+    \label{fig:create_recruitment}
+\end{figure}
+
+\subsection{Giao diện tính năng giao tiếp}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{anh_hoi_thoai.png}
+    \caption{Giao diện hội thoại tin nhắn}
+    \label{fig:conversation}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{anh_gui_loi_moi_ket_ban.png}
+    \caption{Giao diện gửi lời mời kết bạn}
+    \label{fig:friend_request}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_khi_co_nguoi_gui_loi_moi_ket_ban.png}
+    \caption{Giao diện nhận lời mời kết bạn}
+    \label{fig:friend_received}
+\end{figure}
+
+\subsection{Giao diện trang quản trị}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_trang_bang_dieu_khien_quan_tri.png}
+    \caption{Giao diện bảng điều khiển quản trị viên}
+    \label{fig:admin_dashboard}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Giao_dien_quan_li_nguoi_dung.png}
+    \caption{Giao diện quản lý người dùng}
+    \label{fig:admin_users}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_kiem_duyet_xac_minh.png}
+    \caption{Giao diện kiểm duyệt xác minh sinh viên}
+    \label{fig:admin_verify}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{quan_li_bai_viet_cua_trang_quan_tri_.png}
+    \caption{Giao diện quản lý bài viết}
+    \label{fig:admin_posts}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_xu_ly_khieu_nai_trang_quan_tri.png}
+    \caption{Giao diện xử lý khiếu nại}
+    \label{fig:admin_reports}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_gui_thong_bao_trang_quan_tri.png}
+    \caption{Giao diện gửi thông báo từ quản trị}
+    \label{fig:admin_notification}
+\end{figure}
+
+\section{Đánh giá kết quả}
+
+\subsection{Các chức năng đã hoàn thành}
+
+\begin{table}[H]
+\centering
+\caption{Bảng tổng hợp các chức năng đã hoàn thành}
+\begin{tabular}{|c|l|c|}
+\hline
+\textbf{STT} & \textbf{Chức năng} & \textbf{Trạng thái} \\
+\hline
+1 & Đăng ký/Đăng nhập/Đăng xuất & Hoàn thành \\
+2 & Phân loại người dùng tự động & Hoàn thành \\
+3 & Xác minh sinh viên Y & Hoàn thành \\
+4 & Đăng tin tuyển dụng (bệnh nhân) & Hoàn thành \\
+5 & Đăng tin ứng tuyển (sinh viên) & Hoàn thành \\
+6 & Tìm kiếm và lọc tin & Hoàn thành \\
+7 & Nhắn tin trực tiếp & Hoàn thành \\
+8 & Kết bạn & Hoàn thành \\
+9 & Đánh giá người dùng & Hoàn thành \\
+10 & Lưu tin yêu thích & Hoàn thành \\
+11 & Báo cáo vi phạm & Hoàn thành \\
+12 & Quản lý người dùng (admin) & Hoàn thành \\
+13 & Kiểm duyệt bài viết (admin) & Hoàn thành \\
+14 & Xử lý khiếu nại (admin) & Hoàn thành \\
+15 & Gửi thông báo (admin) & Hoàn thành \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Ưu điểm của hệ thống}
+
+\begin{itemize}
+    \item \textbf{Giao diện thân thiện:} Thiết kế đơn giản, dễ sử dụng cho mọi đối tượng
+    \item \textbf{Responsive:} Hiển thị tốt trên cả máy tính và điện thoại
+    \item \textbf{Bảo mật:} Áp dụng các biện pháp bảo mật cơ bản
+    \item \textbf{Xác minh sinh viên:} Đảm bảo độ tin cậy của sinh viên Y
+    \item \textbf{Đa chức năng:} Tích hợp nhiều tính năng hữu ích
+    \item \textbf{Quản trị đầy đủ:} Admin có thể kiểm soát toàn bộ hệ thống
+\end{itemize}
+
+\subsection{Hạn chế}
+
+\begin{itemize}
+    \item Chưa có ứng dụng mobile native
+    \item Chưa tích hợp thanh toán trực tuyến
+    \item Chưa có tính năng video call
+    \item Chưa có hệ thống thông báo real-time
+    \item Chưa tích hợp bản đồ để tìm kiếm theo vị trí
+\end{itemize}
+
+\newpage
+
+\chapter{KẾT LUẬN VÀ HƯỚNG PHÁT TRIỂN}
+
+\section{Kết luận}
+
+Sau quá trình nghiên cứu và phát triển, đồ án đã hoàn thành các mục tiêu đề ra:
+
+\begin{itemize}
+    \item Xây dựng thành công website kết nối sinh viên ngành Y với người có nhu cầu chăm sóc sức khỏe tại nhà
+    \item Phát triển hệ thống xác minh sinh viên đảm bảo độ tin cậy
+    \item Tích hợp đầy đủ các tính năng giao tiếp: nhắn tin, kết bạn
+    \item Xây dựng hệ thống đánh giá và báo cáo vi phạm
+    \item Hoàn thiện trang quản trị với đầy đủ chức năng
+\end{itemize}
+
+Ứng dụng đã giải quyết được bài toán kết nối giữa sinh viên Y và người có nhu cầu chăm sóc sức khỏe, tạo ra một nền tảng trung gian đáng tin cậy cho cả hai bên.
+
+\textbf{Đóng góp của đồ án:}
+\begin{itemize}
+    \item Cung cấp giải pháp công nghệ cho vấn đề thực tế
+    \item Hỗ trợ sinh viên Y có thêm cơ hội thực hành và thu nhập
+    \item Giúp người có nhu cầu dễ dàng tìm được người chăm sóc phù hợp
+    \item Góp phần giảm tải cho hệ thống y tế
+\end{itemize}
+
+\section{Hướng phát triển}
+
+Trong tương lai, đồ án có thể được mở rộng theo các hướng sau:
+
+\subsection{Phát triển ứng dụng mobile}
+\begin{itemize}
+    \item Xây dựng ứng dụng iOS và Android native
+    \item Hoặc sử dụng React Native/Flutter để phát triển cross-platform
+    \item Tích hợp push notification
+\end{itemize}
+
+\subsection{Tích hợp thanh toán}
+\begin{itemize}
+    \item Tích hợp các cổng thanh toán: VNPay, Momo, ZaloPay
+    \item Hệ thống ví điện tử trong ứng dụng
+    \item Quản lý hoa hồng và thanh toán tự động
+\end{itemize}
+
+\subsection{Nâng cao tính năng}
+\begin{itemize}
+    \item Video call tích hợp
+    \item Thông báo real-time với WebSocket
+    \item Tích hợp Google Maps để tìm kiếm theo vị trí
+    \item AI chatbot hỗ trợ người dùng
+    \item Hệ thống đặt lịch hẹn
+\end{itemize}
+
+\subsection{Mở rộng quy mô}
+\begin{itemize}
+    \item Triển khai trên cloud (AWS, Google Cloud)
+    \item Tối ưu hiệu năng cho lượng người dùng lớn
+    \item Mở rộng sang các lĩnh vực khác: gia sư, giúp việc
+\end{itemize}
+
+\newpage
+
+\chapter*{DANH MỤC TÀI LIỆU THAM KHẢO}
+\addcontentsline{toc}{chapter}{DANH MỤC TÀI LIỆU THAM KHẢO}
+
+\begin{enumerate}
+    \item PHP Documentation. (2024). \textit{PHP Manual}. https://www.php.net/manual/en/
+    
+    \item MySQL Documentation. (2024). \textit{MySQL 8.0 Reference Manual}. https://dev.mysql.com/doc/refman/8.0/en/
+    
+    \item Bootstrap Team. (2024). \textit{Bootstrap 5 Documentation}. https://getbootstrap.com/docs/5.0/
+    
+    \item W3Schools. (2024). \textit{HTML5 Tutorial}. https://www.w3schools.com/html/
+    
+    \item W3Schools. (2024). \textit{CSS Tutorial}. https://www.w3schools.com/css/
+    
+    \item Mozilla Developer Network. (2024). \textit{JavaScript Guide}. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide
+    
+    \item OWASP Foundation. (2024). \textit{OWASP Top Ten}. https://owasp.org/www-project-top-ten/
+    
+    \item Nguyễn Văn A. (2023). \textit{Giáo trình Phát triển ứng dụng Web}. NXB Đại học Quốc gia.
+    
+    \item Trần Văn B. (2022). \textit{Thiết kế cơ sở dữ liệu quan hệ}. NXB Khoa học và Kỹ thuật.
+    
+    \item Care.com. (2024). \textit{About Care.com}. https://www.care.com/about
+\end{enumerate}
+
+\newpage
+
+\chapter*{PHỤ LỤC}
+\addcontentsline{toc}{chapter}{PHỤ LỤC}
+
+\section*{Phụ lục A: Hướng dẫn cài đặt}
+
+\subsection*{Yêu cầu hệ thống}
+\begin{itemize}
+    \item XAMPP (Apache + PHP 7.4+ + MySQL 5.7+)
+    \item Trình duyệt web hiện đại (Chrome, Firefox, Edge)
+    \item Kết nối Internet
+\end{itemize}
+
+\subsection*{Các bước cài đặt}
+
+\begin{enumerate}
+    \item \textbf{Cài đặt XAMPP:}
+    \begin{itemize}
+        \item Tải XAMPP từ https://www.apachefriends.org/
+        \item Cài đặt với các tùy chọn mặc định
+        \item Khởi động Apache và MySQL từ XAMPP Control Panel
+    \end{itemize}
+    
+    \item \textbf{Chuẩn bị database:}
+    \begin{itemize}
+        \item Mở phpMyAdmin: http://localhost/phpmyadmin
+        \item Tạo database mới tên \texttt{dacn1\_db}
+        \item Import file \texttt{database.sql}
+    \end{itemize}
+    
+    \item \textbf{Cấu hình ứng dụng:}
+    \begin{itemize}
+        \item Copy thư mục dự án vào \texttt{C:\textbackslash xampp\textbackslash htdocs\textbackslash}
+        \item Mở file \texttt{config.php} và cập nhật thông tin database nếu cần
+    \end{itemize}
+    
+    \item \textbf{Truy cập ứng dụng:}
+    \begin{itemize}
+        \item Mở trình duyệt và truy cập: http://localhost/DACN2
+    \end{itemize}
+\end{enumerate}
+
+\section*{Phụ lục B: Một số giao diện bổ sung}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_cai_dat_trang_sinh_vien.png}
+    \caption{Giao diện cài đặt tài khoản}
+    \label{fig:settings}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_ho_tro_trang_sinh_vien.png}
+    \caption{Giao diện trung tâm hỗ trợ}
+    \label{fig:support}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_danh_gia_trang_sinh_vien.png}
+    \caption{Giao diện đánh giá người dùng}
+    \label{fig:rating}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.9\textwidth]{giao_dien_lich_su_nhan_viec_trang_sinh_vien.png}
+    \caption{Giao diện lịch sử nhận việc}
+    \label{fig:history}
+\end{figure}
+
+\end{document}
