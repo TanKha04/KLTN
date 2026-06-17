@@ -111,3 +111,10 @@ thesis/
 *.txt
 *.text
 *.sql
+
+# Reorganized directories
+database/
+docs/
+tests/
+backups/
+
