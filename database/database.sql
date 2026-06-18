@@ -14,8 +14,8 @@
 -- =====================================================
 
 -- Tạo database nếu chưa tồn tại (hoạt động trên cả XAMPP và Docker)
-CREATE DATABASE IF NOT EXISTS `dacn1_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE `dacn1_db`;
+-- CREATE DATABASE IF NOT EXISTS `dacn1_db` CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+-- USE `dacn1_db`;
 
 -- =====================================================
 -- XÓA BẢNG CŨ NẾU TỒN TẠI (theo thứ tự phụ thuộc)
