@@ -2,7 +2,7 @@
 require_once 'config.php';
 
 // Simple admin creation script for local/dev use.
-// Usage (browser): http://localhost/DACN2/create_admin.php
+// Usage (browser): http://localhost/DATN/create_admin.php
 // Optional query params: ?email=112222039&password=123456
 
 if (php_sapi_name() === 'cli') {

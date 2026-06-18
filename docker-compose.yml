@@ -37,3 +37,5 @@ services:
 
 volumes:
   db_data:
+    external: true
+    name: dacn2_db_data

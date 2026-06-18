@@ -136,7 +136,7 @@ function find_upload(string $path): ?string {
     ];
     
     foreach ($candidates as $candidate) {
-        if (file_exists(__DIR__ . '/' . $candidate)) {
+        if (file_exists(dirname(__DIR__) . '/' . $candidate)) {
             return $candidate;
         }
     }

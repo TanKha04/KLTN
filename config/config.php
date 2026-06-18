@@ -1,41 +1,92 @@
 <?php
-// config.php - Cấu hình dành riêng cho InfinityFree
+// config.php - Auto-detect Docker or local environment
 ob_start();
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Cấu hình InfinityFree
-define('DB_HOST', 'sql302.infinityfree.com');
-define('DB_NAME', 'if0_41797563_kltn');
-define('DB_USER', 'if0_41797563');
-define('DB_PASS', '6SGKyZRQ31Ey');
+// Load .env file if it exists
+if (file_exists(dirname(__DIR__) . '/.env')) {
+    $lines = file(dirname(__DIR__) . '/.env', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+    foreach ($lines as $line) {
+        $line = trim($line);
+        if ($line === '' || strpos($line, '#') === 0) continue;
+        $parts = explode('=', $line, 2);
+        if (count($parts) === 2) {
+            $name = trim($parts[0]);
+            $value = trim($parts[1]);
+            $value = trim($value, '"\'');
+            if (getenv($name) === false) {
+                putenv("$name=$value");
+            }
+            $_ENV[$name] = $value;
+            $_SERVER[$name] = $value;
+        }
+    }
+}
 
-// Tự động nhận diện IP/Domain và thư mục gốc
-$host = $_SERVER['HTTP_HOST'] ?? 'localhost';
-$scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
-$scriptDir = dirname($_SERVER['SCRIPT_NAME'] ?? '/');
-$basePath = $scriptDir === '/' || $scriptDir === '\\' ? '' : str_replace('\\', '/', $scriptDir);
-define('SITE_URL', $scheme . '://' . $host . $basePath);
+// Define API constants from environment
+if (!defined('GEMINI_API_KEY')) {
+    define('GEMINI_API_KEY', getenv('GEMINI_API_KEY') ?: 'AIzaSyBxF_20QmJsyBRr-65K1wgQ21l6L8tLodA');
+}
+if (!defined('GEMINI_MODEL')) {
+    define('GEMINI_MODEL', getenv('GEMINI_MODEL') ?: 'gemini-flash-latest');
+}
+if (!defined('HUGGINGFACE_API_KEY')) {
+    define('HUGGINGFACE_API_KEY', getenv('HUGGINGFACE_API_KEY') ?: '');
+}
+
+// Detect Docker environment - kiểm tra chính xác hơn
+$isDocker = false;
+
+// Cách 1: Kiểm tra biến môi trường DOCKER_CONTAINER (set trong docker-compose)
+if (getenv('DOCKER_CONTAINER') === 'true') {
+    $isDocker = true;
+}
+// Cách 2: Kiểm tra file /.dockerenv (chỉ tồn tại trong Linux container)
+elseif (PHP_OS_FAMILY === 'Linux' && file_exists('/.dockerenv')) {
+    $isDocker = true;
+}
+// Cách 3: Kiểm tra hostname có phải container ID không
+elseif (PHP_OS_FAMILY === 'Linux' && preg_match('/^[a-f0-9]{12}$/', gethostname())) {
+    $isDocker = true;
+}
+
+if ($isDocker) {
+    // Docker configuration
+    define('DB_HOST', 'db');
+    define('DB_NAME', 'dacn1_db');
+    define('DB_USER', 'root');
+    define('DB_PASS', 'rootpassword');
+    // Sử dụng ngrok URL khi test từ thiết bị khác, đổi lại localhost:8080 khi không dùng ngrok
+    define('SITE_URL', 'https://speakable-rosamaria-foxily.ngrok-free.dev');
+} else {
+    // Local XAMPP configuration
+    define('DB_HOST', 'localhost');
+    define('DB_NAME', 'dacn1_db');
+    define('DB_USER', 'root');
+    define('DB_PASS', '');
+    define('SITE_URL', 'http://localhost/DATN');
+}
 
 define('APP_NAME', 'Kết nối Y tế');
 define('MAIL_FROM_ADDRESS', 'tramtankhatv@gmail.com');
 define('MAIL_FROM_NAME', 'Kết nối Y tế');
-define('SMTP_HOST', 'smtp.gmail.com');
-define('SMTP_PORT', 587);
-define('SMTP_ENCRYPTION', 'tls');
-define('SMTP_USERNAME', 'tramtankhatv@gmail.com');
-define('SMTP_PASSWORD', 'bghf tohu ppff vkea');
+if ($isDocker) {
+    define('SMTP_HOST', 'smtp.gmail.com');
+    define('SMTP_PORT', 587);
+    define('SMTP_ENCRYPTION', 'tls');
+    define('SMTP_USERNAME', 'tramtankhatv@gmail.com');
+    define('SMTP_PASSWORD', 'bghf tohu ppff vkea');
+} else {
+    define('SMTP_HOST', 'smtp.gmail.com');
+    define('SMTP_PORT', 587);
+    define('SMTP_ENCRYPTION', 'tls');
+    define('SMTP_USERNAME', 'tramtankhatv@gmail.com');
+    define('SMTP_PASSWORD', 'bghf tohu ppff vkea');
+}
 define('FACEBOOK_APP_ID', getenv('FACEBOOK_APP_ID') ?: '1274834994363695');
 define('FACEBOOK_APP_SECRET', getenv('FACEBOOK_APP_SECRET') ?: 'c8ca96fd22492f2fd6147580f5995568');
-
-// Hugging Face AI Configuration
-define('HUGGINGFACE_API_KEY', getenv('HUGGINGFACE_API_KEY') ?: '');
-
-// Google Gemini AI Configuration
-define('GEMINI_API_KEY', getenv('GEMINI_API_KEY') ?: 'AIzaSyBxF_20QmJsyBRr-65K1wgQ21l6L8tLodA');
-define('GEMINI_MODEL', 'gemini-flash-latest');
-define('GEMINI_API_URL', 'https://generativelanguage.googleapis.com/v1beta/models/' . GEMINI_MODEL . ':generateContent');
 
 try {
     $pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8mb4', DB_USER, DB_PASS, [
@@ -81,6 +132,7 @@ function require_admin() {
         exit;
     }
 }
+
 
 function refresh_student_verification_flag() {
     if (!empty($_SESSION['user_id']) && ($_SESSION['role'] ?? '') === 'student') {
@@ -145,7 +197,7 @@ function find_upload(string $path): ?string {
         $candidates[] = ltrim($path, '/');
     }
     foreach ($candidates as $candidate) {
-        $fs = __DIR__ . '/' . $candidate;
+        $fs = dirname(__DIR__) . '/' . $candidate;
         if (file_exists($fs)) {
             return $candidate;
         }
@@ -188,4 +240,28 @@ function upload_exists(?string $path): bool {
     if (empty($path)) return false;
     if (preg_match('#^https?://#i', $path)) return true;
     return find_upload($path) !== null;
+}
+
+function format_chat_message($msgText) {
+    // 1. Escape HTML safely
+    $escaped = htmlspecialchars($msgText, ENT_QUOTES, 'UTF-8');
+    
+    // 2. Parse Markdown Bold: **text** -> <strong>text</strong>
+    $escaped = preg_replace('/\*\*(.*?)\*\*/', '<strong>$1</strong>', $escaped);
+    
+    // 3. Parse Markdown Links: [Text](URL) -> <a href="URL" ...>Text</a>
+    $escaped = preg_replace_callback('/\[(.*?)\]\((.*?)\)/', function($matches) {
+        $text = $matches[1];
+        $url = $matches[2];
+        
+        $escUrl = htmlspecialchars($url, ENT_QUOTES, 'UTF-8');
+        
+        if (strpos($url, 'assignment_history.php') !== false) {
+            return '<a href="' . $escUrl . '" onclick="if(window.parent && window.parent !== window && typeof window.parent.showSection === \'function\') { window.parent.showSection(\'history\', \'Lịch sử nhận việc\'); return false; } else { window.location.href=\'' . $escUrl . '\'; return false; }" class="chat-message-link">' . $text . '</a>';
+        }
+        
+        return '<a href="' . $escUrl . '" target="_top" class="chat-message-link">' . $text . '</a>';
+    }, $escaped);
+    
+    return nl2br($escaped);
 }

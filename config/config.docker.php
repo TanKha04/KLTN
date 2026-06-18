@@ -292,7 +292,7 @@ function find_upload(string $path): ?string {
     }
 
     foreach ($candidates as $candidate) {
-        $fs = __DIR__ . '/' . $candidate;
+        $fs = dirname(__DIR__) . '/' . $candidate;
         if (file_exists($fs)) {
             return $candidate;
         }
