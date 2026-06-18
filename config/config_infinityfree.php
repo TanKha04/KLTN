@@ -7,9 +7,9 @@ if (session_status() === PHP_SESSION_NONE) {
 
 // Cấu hình InfinityFree
 define('DB_HOST', 'sql302.infinityfree.com');
-define('DB_NAME', 'if0_41797563_kltn');
-define('DB_USER', 'if0_41797563');
-define('DB_PASS', '6SGKyZRQ31Ey');
+define('DB_NAME', 'if0_41797527_db');
+define('DB_USER', 'if0_41797527');
+define('DB_PASS', 'P1ToZXnPT7C3b');
 
 // Tự động nhận diện IP/Domain và thư mục gốc
 $host = $_SERVER['HTTP_HOST'] ?? 'localhost';
